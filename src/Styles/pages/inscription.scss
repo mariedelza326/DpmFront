@@ -1,0 +1,111 @@
+:root {
+  --color-1: #264653;
+  --color-2: #2a9d8f;
+  --color-3: #e9c46a;
+  --color-4: #f4a261;
+  --font-1: "Roboto", sans-serif;
+  --borderRadius: 4px;
+  --maxWidth: 1200px;
+  --padding: 2rem;
+  --mobile-padding: 1rem;
+  --desktop-padding: 2rem;
+}
+.inscription-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inscription-form {
+  width: 80%;
+  max-width: 600px;
+  margin-top: 20px;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  animation: slideIn 1s ease-in-out;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+
+  h2 {
+    margin-bottom: 20px;
+    margin-left: -5px;
+    color: white;
+    font-family: var(--font-1);
+    font-weight: 900;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 3px 6px 2px var(--color-1);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.input-group i {
+  position: absolute;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  padding-left: 35px;
+  border: 1px solid $white;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.checkbox-group {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-bottom: 10px;
+    margin-left: -5px;
+    color: white;
+    font-family: var(--font-1);
+    font-weight: 600;
+    font-size: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.bouton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  background-color: var(--color-1);
+  color: $white;
+  font-family: $font-2;
+  font-weight: 800;
+  transition: background-color 0.3s ease;
+}
+
+.bouton:hover {
+  background-color: $color-2;
+  color: $black;
+}
+
+@media (max-width: 768px) {
+  .inscription-form {
+    width: 100%;
+  }
+}

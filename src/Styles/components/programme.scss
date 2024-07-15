@@ -1,0 +1,97 @@
+:root {
+  --color-1: #264653;
+  --color-2: #2a9d8f;
+  --color-3: #e9c46a;
+  --color-4: #f4a261;
+  --font-1: "Roboto", sans-serif;
+  --borderRadius: 4px;
+  --maxWidth: 1200px;
+  --padding: 2rem;
+  --mobile-padding: 1rem;
+  --desktop-padding: 2rem;
+}
+
+.programme-container {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.programme-title {
+  font-size: 3em;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  color: #192a56;
+}
+
+.programme-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.programme-card-link {
+  text-decoration: none;
+  color: var(--color-1);
+}
+
+.programme-card {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 350px;
+  height: 200px;
+  background: $white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  animation: slideIn 1s ease-in-out;
+}
+
+.programme-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+.icon-container {
+  margin-right: 15px;
+}
+
+.programme-icon {
+  font-size: 2em;
+}
+
+.programme-info {
+  text-align: left;
+}
+
+.programme-info h2 {
+  margin: 5px;
+  font-size: 1.3em;
+  text-wrap: nowrap;
+}
+
+.programme-info p {
+  margin: 5px 0 0;
+  font-size: 1em;
+  color: $black;
+  width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media (max-width: 768px) {
+  .programme-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .programme-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}

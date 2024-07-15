@@ -1,0 +1,176 @@
+:root {
+  --color-1: #192a56;
+
+  --color-2: #2a9d8f;
+
+  --color-3: #e9c46a;
+
+  --color-4: #f4a261;
+
+  --font-1: "Roboto", sans-serif;
+
+  --borderRadius: 4px;
+}
+
+.process-we-follow {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 30px;
+}
+
+.info {
+  display: flex;
+
+  color: #192a56;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  margin-top: 60px;
+
+  margin-bottom: 60px;
+
+  h1 {
+    color: #192a56;
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+h2 {
+  font-family: $font-1;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  color: #192a56;
+
+  margin-bottom: 10px;
+}
+.section-text {
+  font-family: $font-2;
+  width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.section {
+  flex: 1;
+
+  margin: 0 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.icon-circle {
+  width: 80px;
+
+  height: 80px;
+
+  border-radius: 50%;
+
+  background-color: #192a56;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 30px;
+}
+
+.icon-circle:hover {
+  background-color: var(--color-2);
+}
+
+.benefits__icon {
+  font-size: 30px;
+}
+
+.fa-flask {
+  color: $white;
+}
+
+.fa-leaf {
+  color: $white;
+}
+
+.fa-seedling {
+  color: $white;
+}
+
+.en-savoir-plus {
+  margin-top: 30px;
+
+  background-color: #192a56;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 20px;
+
+  font-family: $font-1;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+.en-savoir-plus:hover {
+  background-color: var(--color-4);
+
+  color: black;
+}
+
+.en-savoir-plus i {
+  margin-left: 5px;
+
+  font-weight: 800px;
+}
+
+@media (max-width: 768px) {
+  .process-we-follow {
+    flex-direction: column;
+  }
+  .section {
+    margin: 20px;
+  }
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+  }
+  .benefits__icon {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-we-follow {
+    font-size: 18px;
+  }
+  .section {
+    margin: 10px;
+  }
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+  }
+  .benefits__icon {
+    font-size: 18px;
+  }
+}

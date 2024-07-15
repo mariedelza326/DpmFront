@@ -1,0 +1,125 @@
+:root {
+  --color-1: #264653;
+  --color-2: #2a9d8f;
+  --color-3: #e9c46a;
+  --color-4: #f4a261;
+  --font-1: "Roboto", sans-serif;
+  --borderRadius: 4px;
+  --maxWidth: 1200px;
+  --padding: 2rem;
+  --mobile-padding: 1rem;
+  --desktop-padding: 2rem;
+}
+.documente-pagemarie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--desktop-padding);
+
+  @media (max-width: 768px) {
+  }
+}
+.documentemarie {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.contentamarie h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  color: #192a56;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.actualite-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+
+  .actualite-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    .back-button {
+      font-size: 2em;
+      text-decoration: none;
+      color: #007bff;
+      margin-bottom: 10px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .actualite-title {
+      font-size: 2em;
+      margin-top: -40px;
+      font-family: $font-2;
+      width: 100%;
+      font-weight: bold;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .actualite-date {
+      font-size: 0.9em;
+      color: #666;
+      margin-left: -90px;
+    }
+  }
+
+  .actualite-image {
+    width: 1000px;
+    height: 600px;
+    margin-left: -80px;
+    margin-bottom: 20px;
+  }
+
+  .actualite-content {
+    font-size: 1em;
+    margin-top: 10px;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 10px;
+    margin-left: -80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .actualite-detail {
+    padding: 10px;
+
+    .actualite-header {
+      .actualite-title {
+        font-size: 1.5em;
+      }
+
+      .actualite-date {
+        font-size: 0.8em;
+      }
+    }
+
+    .actualite-content {
+      h2 {
+        font-size: 1.2em;
+      }
+
+      p {
+        font-size: 0.9em;
+      }
+    }
+  }
+}

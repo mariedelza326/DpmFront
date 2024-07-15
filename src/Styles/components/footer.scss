@@ -1,0 +1,275 @@
+:root {
+  --color-1: #192a56;
+
+  --color-2: #2a9d8f;
+
+  --color-3: #e9c46a;
+
+  --color-4: #f4a261;
+
+  --font-1: "Roboto", sans-serif;
+
+  --borderRadius: 4px;
+}
+.section-footer {
+  background-color: #192a56;
+  margin-top: 80px;
+  object-fit: cover;
+  width: 100%;
+  // height: 62%;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+
+.footer {
+  color: #333;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.footer-section {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.footer-logo-title {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.footer-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  font-family: $font-2;
+  color: $white;
+}
+
+.footer-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: $white;
+  width: 80%;
+  font-family: $font-2;
+  margin-bottom: 20px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.footer-social {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.footer-social-icon {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.footer-social-icon i {
+  font-size: 24px;
+  color: $color-2;
+  transition: color 0.3s ease;
+}
+
+.footer-social-icon:hover {
+  color: #3e8e41;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-link {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: $white;
+  font-family: $font-2;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--color-3);
+  font-weight: 900;
+}
+
+.footer-contact {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.footer-contact-icon {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: $white;
+  font-family: $font-2;
+}
+
+.footer-contact-icon i {
+  font-size: 20px;
+  color: $color-2;
+  transition: color 0.3s ease;
+  margin-right: 10px;
+}
+
+.footer-contact-icon:hover i {
+  color: #3e8e41;
+}
+
+.footer-copyright {
+  display: flex;
+
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.footer-copyright p {
+  font-size: 16px;
+  color: $white;
+  font-weight: bold;
+  font-family: $font-2;
+  transition: color 0.3s ease;
+}
+
+.footer-copyright p:hover {
+  color: $color-2;
+}
+.pre-footer {
+  background-color: $color-2;
+  padding: 2rem 1rem;
+  // margin-top: 100px;
+  // width: 1330px;
+  // margin-left: -83px;
+}
+
+.pre-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pre-footer-text {
+  text-align: right;
+}
+
+.pre-footer-text h2 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800px;
+  font-family: var(--font-1);
+}
+
+.pre-footer-text p {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600px;
+  font-family: var(--font-1);
+  text-justify: inter-word;
+  width: 100%;
+}
+
+.contact-button {
+  background-color: white;
+  color: #192a56;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #192a56;
+  color: white;
+  border: 2px solid white;
+}
+
+.section-footer {
+  margin-top: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pre-footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pre-footer-text {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .contact-button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+/* Styles pour les écrans de petite taille (smartphones) */
+@media (max-width: 767px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #192a56;
+  }
+
+  .footer-section {
+    margin-bottom: 30px;
+  }
+
+  .footer-logo {
+    width: 80px;
+  }
+
+  .footer-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-text {
+    width: 100%;
+  }
+
+  .footer-social {
+    justify-content: flex-start;
+  }
+
+  .footer-contact {
+    align-items: flex-start;
+  }
+}
+
+/* Styles pour les écrans de taille moyenne (tablettes) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .footer-text {
+    width: 100%;
+    background-color: #192a56;
+  }
+}
+
+/* Styles pour les écrans de grande taille (ordinateurs de bureau) */
+@media (min-width: 992px) {
+  /* Aucun style supplémentaire requis pour les grands écrans */
+}

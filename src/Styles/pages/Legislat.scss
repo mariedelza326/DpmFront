@@ -1,0 +1,71 @@
+/* Legislat.css */
+.legislat-container {
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.legislat-header {
+  margin-bottom: 20px;
+}
+
+.legislat-header h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  align-items: center;
+  text-align: center;
+  color: #192a56;
+  font-family: "Montserrat", sans-seri;
+}
+
+.legislat-header p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.legislat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Display cards in rows of four */
+  gap: 20px;
+}
+
+.legislat-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.legislat-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.legislat-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.legislat-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  align-items: center;
+  color: #192a56;
+}
+
+.legislat-type {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.legislat-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #192a56;
+  font-family: "Montserrat", sans-seri;
+}
+
+.legislat-description {
+  font-size: 14px;
+  color: #666;
+}

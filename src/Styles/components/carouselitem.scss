@@ -1,0 +1,71 @@
+:root {
+  --color-1: #264653;
+  --color-2: #2a9d8f;
+  --color-3: #e9c46a;
+  --color-4: #f4a261;
+  --font-1: "Roboto", sans-serif;
+  --borderRadius: 4px;
+  --maxWidth: 1200px;
+  --padding: 2rem;
+  --mobile-padding: 1rem;
+  --desktop-padding: 2rem;
+}
+.CarouselItem {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .CarouselItem-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .CarouselItem-item {
+    display: flex;
+    min-width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    .CarouselItem-image {
+      width: 100%;
+      height: auto;
+
+      @media (min-width: 768px) {
+        width: 50%;
+      }
+    }
+
+    .CarouselItem-text {
+      padding: 20px;
+      text-align: center;
+
+      @media (min-width: 768px) {
+        width: 50%;
+        text-align: left;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
+      }
+
+      p {
+        margin: 0;
+        font-size: 1rem;
+
+        @media (min-width: 768px) {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}
