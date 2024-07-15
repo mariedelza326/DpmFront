@@ -60,6 +60,8 @@ const Dashboard = ({ username }) => {
       "features",
       "message",
       "commentaires",
+      "personnel",
+      "director-messages",
     ];
 
     for (const tab of tabs) {
@@ -164,35 +166,83 @@ const Dashboard = ({ username }) => {
     let fields;
     switch (activeTab) {
       case "actualites":
-        fields = ["titre", "contenu", "image"];
+      case "director-messages":
+        fields = [
+          { name: "titre", type: "text" },
+          { name: "contenu", type: "text" },
+          { name: "image", type: "file" },
+        ];
         break;
       case "accords":
-        fields = ["title", "image", "date_debut", "date_fin"];
+        fields = [
+          { name: "title", type: "text" },
+          { name: "image", type: "file" },
+          { name: "date_debut", type: "date" },
+          { name: "date_fin", type: "date" },
+        ];
         break;
       case "projets":
         fields = [
-          "titre",
-          "subtitle",
-          "description",
-          "image",
-          "date_debut",
-          "date_fin",
+          { name: "titre", type: "text" },
+          { name: "subtitle", type: "text" },
+          { name: "description", type: "text" },
+          { name: "image", type: "file" },
+          { name: "date_debut", type: "date" },
+          { name: "date_fin", type: "date" },
         ];
         break;
       case "programmes":
-        fields = ["nom", "subtitle", "description", "image", "date_creation"];
+        fields = [
+          { name: "nom", type: "text" },
+          { name: "subtitle", type: "text" },
+          { name: "description", type: "text" },
+          { name: "image", type: "file" },
+          { name: "date_creation", type: "date" },
+        ];
         break;
       case "journal":
-        fields = ["titre", "video"];
+        fields = [
+          { name: "titre", type: "text" },
+          { name: "video", type: "file" },
+        ];
         break;
       case "rapports":
-        fields = ["titre", "image", "description", "fichier_pdf"];
+        fields = [
+          { name: "titre", type: "text" },
+          { name: "image", type: "file" },
+          { name: "description", type: "text" },
+          { name: "fichier_pdf", type: "file" },
+        ];
         break;
       case "features":
-        fields = ["title", "image", "description", "order"];
+        fields = [
+          { name: "title", type: "text" },
+          { name: "image", type: "file" },
+          { name: "description", type: "text" },
+          { name: "order", type: "number" },
+        ];
         break;
       case "message":
-        fields = ["prenom", "nom", "email", "telephone", "message"];
+        fields = [
+          { name: "prenom", type: "text" },
+          { name: "nom", type: "text" },
+          { name: "email", type: "email" },
+          { name: "telephone", type: "tel" },
+          { name: "message", type: "text" },
+        ];
+        break;
+      case "personnel":
+        fields = [
+          { name: "name", type: "text" },
+          { name: "job", type: "text" },
+          { name: "photo", type: "file" },
+          { name: "linkedin", type: "url" },
+          {
+            name: "category",
+            type: "select",
+            options: ["directeur", "equipes", "chefs_de_region"],
+          },
+        ];
         break;
       default:
         fields = [];
@@ -208,38 +258,44 @@ const Dashboard = ({ username }) => {
             {editingId ? "Modifier" : "Ajouter"} {activeTab}
           </h3>
           <form onSubmit={handleSubmit}>
-            {fields.map((key) => (
-              <div key={key} style={styles.formGroup}>
-                <label htmlFor={key}>{key}</label>
-                {key === "image" || key === "video" || key === "fichier_pdf" ? (
+            {fields.map((field) => (
+              <div key={field.name} style={styles.formGroup}>
+                <label htmlFor={field.name}>{field.name}</label>
+                {field.type === "file" ? (
                   <input
                     type="file"
-                    id={key}
-                    name={key}
+                    id={field.name}
+                    name={field.name}
                     onChange={handleInputChange}
                     accept={
-                      key === "video"
+                      field.name === "video"
                         ? "video/*"
-                        : key === "fichier_pdf"
+                        : field.name === "fichier_pdf"
                         ? ".pdf"
                         : "image/*"
                     }
                   />
-                ) : key.includes("date") ? (
-                  <input
-                    type="date"
-                    id={key}
-                    name={key}
-                    value={formData[key] || ""}
+                ) : field.type === "select" ? (
+                  <select
+                    id={field.name}
+                    name={field.name}
+                    value={formData[field.name] || ""}
                     onChange={handleInputChange}
                     required
-                  />
+                  >
+                    <option value="">Sélectionner une catégorie</option>
+                    {field.options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                 ) : (
                   <input
-                    type={key === "email" ? "email" : "text"}
-                    id={key}
-                    name={key}
-                    value={formData[key] || ""}
+                    type={field.type}
+                    id={field.name}
+                    name={field.name}
+                    value={formData[field.name] || ""}
                     onChange={handleInputChange}
                     required
                   />
@@ -305,6 +361,10 @@ const Dashboard = ({ username }) => {
                     <strong>Commentaire: </strong> {item.contenu}
                   </div>
                 </div>
+              ) : activeTab === "personnel" ? (
+                <div>
+                  <strong>{item.name}</strong> - {item.job} ({item.category})
+                </div>
               ) : (
                 item.titre || item.title || item.nom
               )}
@@ -335,6 +395,8 @@ const Dashboard = ({ username }) => {
     "features",
     "message",
     "commentaires",
+    "personnel",
+    "director-messages",
     "inscription",
   ];
 
@@ -351,13 +413,16 @@ const Dashboard = ({ username }) => {
               }}
               onClick={() => setActiveTab(item)}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
+              {item === "director-messages"
+                ? "Messages du directeur"
+                : item.charAt(0).toUpperCase() + item.slice(1)}
               <span style={styles.count}>{counts[item] || 0}</span>
             </li>
           ))}
         </ul>
         <div style={styles.logout} onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOutAlt} />
+          Deconnexion
         </div>
       </nav>
       <main style={styles.main}>
@@ -386,26 +451,28 @@ const styles = {
     color: "#fff",
     padding: "15px",
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: "column",
+    alignItems: "flex-start",
     boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-  },
-  logo: {
-    fontSize: "24px",
-    fontWeight: "bold",
+    width: "100%",
   },
   navItems: {
     listStyle: "none",
-    padding: 0,
+    padding: "0",
     display: "flex",
+    flexWrap: "wrap",
+    gap: "10px",
+    width: "100%",
+    justifyContent: "flex-start",
   },
   navItem: {
-    margin: "0 10px",
+    margin: "5px",
     cursor: "pointer",
     position: "relative",
     padding: "5px 10px",
     borderRadius: "5px",
     transition: "background-color 0.3s",
+    whiteSpace: "nowrap",
   },
   activeNavItem: {
     fontWeight: "bold",
@@ -423,10 +490,14 @@ const styles = {
   },
   logout: {
     cursor: "pointer",
-    fontSize: "16px",
+    fontSize: "20px",
+    fontWeight: "800",
     padding: "5px 10px",
     borderRadius: "5px",
     transition: "background-color 0.3s",
+    marginTop: "10px",
+    alignSelf: "flex-end",
+    color: "#E71C23",
   },
   main: {
     flex: 1,

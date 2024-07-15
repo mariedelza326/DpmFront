@@ -1,257 +1,31 @@
-import React, { useState } from "react";
-
-const tabs = [
-  {
-    title: "Directeur",
-    people: [
-      {
-        id: 1,
-        name: "Mr Diene Faye",
-        job: "Directeur de la Direction des Peches Maritime",
-        photo: "../media/dg7.jpeg",
-        linkedin: "https://linkedin.com/in/johndoe",
-      },
-    ],
-  },
-  {
-    title: "Equipes",
-    people: [
-      {
-        id: 1,
-        name: "Mrs Gnagna Diop",
-        job: "Secretariat",
-        photo: "../media/sea.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 2,
-        name: "Mr Moussa Cisse",
-        job: "Bureau de Gestion",
-        photo: "../media/sailing.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 3,
-        name: "Mr Pape Amadou Thiam ",
-        job: "Bureau Courier",
-        photo: "../media/entete.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 4,
-        name: "Mr Daouda Gueye",
-        job: "Centre de Peche de Mission",
-        photo: "../media/fish.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 5,
-        name: "Mrs Fatima Kane ",
-        job: "Bureau Legislation",
-        photo: "../media/jelly.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 6,
-        name: " Mr Malang Sadio ",
-        job: "Bureau Legislation",
-        photo: "../media/unreal.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 7,
-        name: "Mr Moustapha Diop ",
-        job: "Bureau Informatique",
-        photo: "../media/turtle.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 8,
-        name: "Mrs Mariama Dioh",
-        job: "Bureau de la Documentation de l'information et de la communication",
-        photo: "../media/mari.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 9,
-        name: "Mrs Aminata Ndiaye ",
-        job: "Bureau Suivi Evaluation",
-        photo: "../media/boat.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 10,
-        name: "Mr Coumba Ndoffene Diouf ",
-        job: "Bureau de l'Amenagement des peches ",
-        photo: "../media/beach.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 11,
-        name: "Mrs Aissatou Fall Ndoye",
-        job: "Bureau de l'Environnement et des Changements Climatiques",
-        photo: "../media/ocean1.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 12,
-        name: "Mrs Mame Diarra Loum",
-        job: "Bureau des Statistiques",
-        photo: "../media/ocean2.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 13,
-        name: "Mr Sidiya Diouf ",
-        job: "Division de la Peche Artisanal",
-        photo: "../media/ocean3.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 14,
-        name: "Mr Mbaye Ndialou Seck",
-        job: "Bureau de l'immatriculation des permis de peches",
-        photo: "../media/ocean4.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 15,
-        name: "Mrs Amy Gueye",
-        job: "Bureau d'Appui aux Organisations Professionnelles",
-        photo: "../media/ocean6.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 16,
-        name: "Mrs Elizabeth Mbaye  ",
-        job: "Bureau d'Appui aux Activites du Genre et de l'Equite",
-        photo: "../media/ocean7.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 17,
-        name: "Mr Idrissa Yaya Dieme ",
-        job: "Bureau de la Gouvernance Locale",
-        photo: "../media/ocean8.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 18,
-        name: "Mr Ibrahima Diouf  ",
-        job: "Division de la peche industrielle",
-        photo: "../media/ocean9.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 19,
-        name: "Mr Modou Mbengue  ",
-        job: "Bureau des Autorisations de Peche",
-        photo: "../media/ocean10.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 20,
-        name: "Mr Edouard Mendy ",
-        job: "Bureau de Suivie de la Production",
-        photo: "../media/ocean11.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 21,
-        name: "Mr Amie Gueye",
-        job: "Bureau des Organisations des Peches ",
-        photo: "../media/ocean12.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 22,
-        name: "Mr Assane Sow ",
-        job: "Division de la Valorisation des Produits de la Peches Artisanal ",
-        photo: "../media/ocean12.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 23,
-        name: "Mr Abdou Diop",
-        job: "Bureau des Infrastructures de la Peche Maritime",
-        photo: "../media/ocean12.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 24,
-        name: "Mrs Hortence K.Diatta",
-        job: "Bureau des Organisations des Peches ",
-        photo: "../media/ocean12.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-      {
-        id: 25,
-        name: "Mr Marc Emilien Coly ",
-        job: "Bureau de Suivi de la Valorisation des Produits de la Peche ",
-        photo: "../media/ocean12.jpg",
-        linkedin: "https://linkedin.com/in/janesmith",
-      },
-    ],
-  },
-  {
-    title: "Chefs de région",
-    people: [
-      {
-        id: 1,
-        name: "Mr Amadou Lamine Diagne",
-        job: "SRPS Saint-louis",
-        photo: "../media/mer1.jpg",
-        linkedin: "https://linkedin.com/in/chef1",
-      },
-      {
-        id: 2,
-        name: "Mr Cherif Sambou ",
-        job: "SRPS Louga",
-        photo: "../media/mer2.jpg",
-        linkedin: "https://linkedin.com/in/chef2",
-      },
-      {
-        id: 3,
-        name: "Mr Ismaila Ndiaye",
-        job: "SRPS Dakar",
-        photo: "../media/mer3.jpg",
-        linkedin: "https://linkedin.com/in/chef3",
-      },
-      {
-        id: 4,
-        name: "Mr Ibrahima Lo",
-        job: "SRPS Thies",
-        photo: "../media/mer4.jpg",
-        linkedin: "https://linkedin.com/in/chef4",
-      },
-      {
-        id: 5,
-        name: "Mr Famara Niassy",
-        job: "SRPS Fatick",
-        photo: "../media/mer5.jpg",
-        linkedin: "https://linkedin.com/in/chef5",
-      },
-      {
-        id: 6,
-        name: "Mr Abdoulaye Ndep Sene",
-        job: "SRPS Kaolack",
-        photo: "../media/mer6.jpg",
-        linkedin: "https://linkedin.com/in/chef6",
-      },
-      {
-        id: 7,
-        name: "Mr Abdoulaye Diedhiou",
-        job: "SRPS Ziguinchor",
-        photo: "../media/mer7.jpg",
-        linkedin: "https://linkedin.com/in/chef7",
-      },
-    ],
-  },
-];
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const PersonnelPage = () => {
+  const [personnel, setPersonnel] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
   const [carouselIndex, setCarouselIndex] = useState(0);
+
+  useEffect(() => {
+    const fetchPersonnel = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/api/personnel/"
+        );
+        setPersonnel(response.data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données:", error);
+      }
+    };
+
+    fetchPersonnel();
+  }, []);
+
+  const tabs = [
+    { title: "Directeur", category: "directeur" },
+    { title: "Equipes", category: "equipes" },
+    { title: "Chefs de région", category: "chefs_de_region" },
+  ];
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -263,17 +37,23 @@ const PersonnelPage = () => {
   };
 
   const handleNextClick = () => {
+    const currentTabPersonnel = personnel.filter(
+      (person) => person.category === tabs[activeTab].category
+    );
     setCarouselIndex((prevIndex) =>
-      Math.min(prevIndex + 1, Math.ceil(tabs[activeTab].people.length / 3) - 1)
+      Math.min(prevIndex + 1, Math.ceil(currentTabPersonnel.length / 3) - 1)
     );
   };
 
   const renderCards = () => {
-    const people = tabs[activeTab].people;
-    if (activeTab === 0) {
+    const currentTabPersonnel = personnel.filter(
+      (person) => person.category === tabs[activeTab].category
+    );
+
+    if (tabs[activeTab].category === "directeur") {
       return (
         <div className="single-card">
-          {people.map((person) => (
+          {currentTabPersonnel.map((person) => (
             <div key={person.id} className="card">
               <div className="photo">
                 <img src={person.photo} alt={person.name} />
@@ -294,7 +74,7 @@ const PersonnelPage = () => {
     } else {
       const startIndex = carouselIndex * 3;
       const endIndex = startIndex + 3;
-      const visiblePeople = people.slice(startIndex, endIndex);
+      const visiblePeople = currentTabPersonnel.slice(startIndex, endIndex);
 
       return (
         <div className="carousel">
@@ -326,7 +106,7 @@ const PersonnelPage = () => {
           <button
             className="nav-button next"
             onClick={handleNextClick}
-            disabled={endIndex >= people.length}
+            disabled={endIndex >= currentTabPersonnel.length}
           >
             <i className="fas fa-chevron-right"></i>
           </button>
@@ -349,7 +129,7 @@ const PersonnelPage = () => {
         protection de l'environnement marin et le développement économique des
         communautés côtières. En adoptant des pratiques de gestion transparentes
         et inclusives, nous visons à renforcer la confiance et la collaboration
-        avec tous nos partenaires et parties prenantes..
+        avec tous nos partenaires et parties prenantes.
       </p>
       <div className="tabs">
         {tabs.map((tab, index) => (

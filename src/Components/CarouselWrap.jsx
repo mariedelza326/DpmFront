@@ -1,38 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
 
 const CarouselWrap = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselItems = [
-    {
-      image: "../media/dg7.jpeg",
-      title:
-        "Message de Diene Faye, Directeur de la Direction des peches Maritime",
-      content:
-        "Chers collaborateurs, notre entreprise a toujours mis l'innovation au cœur de sa stratégie. Cette année, nous allons redoubler d'efforts pour créer un environnement de travail encore plus stimulant et productif... ",
-    },
-    {
-      image: "../media/dg3.jpeg",
-      title:
-        "Mot de Diene Faye , Directeur de la Direction des Peches Maritime",
-      content:
-        "L'excellence opérationnelle est notre priorité. Je suis fière de l'engagement dont chacun d'entre vous fait preuve au quotidien. Ensemble, nous allons relever les défis qui nous attendent et atteindre de nouveaux sommets...",
-    },
-    {
-      image: "../media/liguria.jpg",
-      title:
-        "Perspective de Diene Faye , Directeur de la Direction des Peches Maritime",
-      content:
-        "L'innovation est le moteur de notre croissance. Cette année, nous lançons plusieurs projets ambitieux qui vont révolutionner notre industrie. Votre créativité et votre expertise seront essentielles pour mener à bien ces initiatives...",
-    },
-  ];
+  const [carouselItems, setCarouselItems] = useState([]);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/api/director-messages/"
+        );
+        setCarouselItems(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (carouselItems.length === 0) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
     }, 9000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [carouselItems]);
+
+  if (carouselItems.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="carousel-wrap">
