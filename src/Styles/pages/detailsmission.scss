@@ -31,7 +31,6 @@
   top: 0;
   left: 0;
   z-index: -1;
-  opacity: 0.1;
 }
 
 .titles {
@@ -44,6 +43,7 @@
     color: #192a56;
     font-size: 4rem;
     font-weight: 900;
+    margin-top: 130px;
     font-family: "Montserrat", sans-serif;
     letter-spacing: 2px;
     text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
@@ -58,6 +58,7 @@
 .contentes {
   max-width: var(--maxWidth);
   width: 100%;
+  margin-top: 100px;
 
   section {
     background-color: rgba(255, 255, 255, 0.9);

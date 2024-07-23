@@ -37,14 +37,17 @@ const Footer = () => {
               >
                 <i className="fab fa-facebook-f"></i>
               </a>
-              {/* <a href="#" className="footer-social-icon">
-              <i className="fab fa-twitter"></i>
-            </a> */}
               <a href="#" className="footer-social-icon">
-                <i className="fab fa-instagram"></i>
+                <i className="fab fa-twitter"></i>
               </a>
+              {/* <a href="#" className="footer-social-icon">
+                <i className="fab fa-instagram"></i>
+              </a> */}
               <a href="#" className="footer-social-icon">
                 <i className="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" className="footer-social-icon">
+                <i className="fab fa-youtube"></i>
               </a>
             </div>
           </div>

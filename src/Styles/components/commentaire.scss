@@ -2,18 +2,48 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  font-family: "Arial", sans-serif;
 
-  form {
-    margin-bottom: 30px;
-    margin-top: 20px;
+  .commone {
+    margin-top: 40px;
+    text-align: center;
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #192a56;
+      text-transform: uppercase;
+    }
+
+    .mention {
+      font-style: italic;
+      color: #666;
+    }
+  }
+
+  .comment-form {
+    margin-top: 30px;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
     input[type="text"],
     input[type="email"],
     textarea {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: #192a56;
+        outline: none;
+      }
     }
 
     textarea {
@@ -22,207 +52,29 @@
     }
 
     button {
-      padding: 10px 20px;
-      background-color: #192a56;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #166fe5;
-      }
-    }
-  }
-}
-.commone {
-  margin-top: 40px;
-  h3 {
-    margin-bottom: 20px;
-    margin-top: 30px;
-
-    font-size: 2rem;
-    font-weight: 600;
-    color: #192a56;
-  }
-  .mention {
-    margin-top: -10px;
-  }
-}
-
-.comment-controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.comment-controls button {
-  border: none;
-  background-color: #192a56;
-  color: white;
-  border: 1px solid #192a56;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.comment-controls button:hover {
-  background-color: white;
-  color: #192a56;
-  border: 1px solid #192a56;
-}
-
-.action-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: color 0.3s ease;
-}
-
-.reply-button:hover {
-  color: #4caf50;
-}
-
-.delete-button:hover {
-  color: #f44336;
-}
-
-.like-button:hover {
-  color: #2196f3;
-}
-
-.liked {
-  color: #2196f3;
-}
-
-.likes-count {
-  margin-left: 5px;
-}
-.comment-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-
-  .action-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 5px;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: white;
-    }
-
-    &.reply-button {
-      color: #4caf50;
-    }
-
-    &.delete-button {
-      color: #f44336;
-    }
-
-    &.toggle-replies-button {
-      color: #2196f3;
-    }
-  }
-}
-.comment {
-  //   background-color: #192a56;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 15px;
-  margin-top: 50px;
-
-  .comment-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-
-    .comment-author {
-      font-weight: 900;
-      font-size: 1rem;
-      //   color: white;
-      font-family: "Montserrat", sans-serif;
-      text-transform: uppercase;
-    }
-
-    .comment-date {
-      font-size: 0.8em;
-      //   color: white;
-    }
-  }
-
-  .comment-content {
-    margin-bottom: 10px;
-    // color: #ddd;
-  }
-
-  .reply-form {
-    margin-top: 10px;
-
-    textarea {
       width: 100%;
-      padding: 8px;
-      margin-bottom: 8px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      resize: vertical;
-    }
-
-    button {
-      padding: 8px 16px;
+      padding: 12px;
       background-color: #192a56;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: 600;
       cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
 
       &:hover {
-        background-color: #166fe5;
+        background-color: #1e3799;
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
   }
-
-  .comment-replies {
-    margin-left: 20px;
-    margin-top: 10px;
-  }
 }
-.comment-form {
-  margin-top: 50px;
 
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    resize: vertical;
-  }
-
-  button {
-    padding: 8px 16px;
-    background-color: #192a56;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #166fe5;
-    }
-  }
-}
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -238,11 +90,13 @@
 
 .popup {
   background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   position: relative;
   animation: popupOpen 0.5s ease-out;
+  max-width: 400px;
+  width: 90%;
 }
 
 @keyframes popupOpen {
@@ -264,15 +118,27 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #192a56;
+  }
 }
 
 .popup-content {
   text-align: center;
+
+  p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+  }
 }
 
 .checkmark {
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   display: block;
   stroke-width: 2;
@@ -281,7 +147,7 @@
   box-shadow: inset 0px 0px 0px #4bb71b;
   animation: fill 0.4s ease-in-out 0.4s forwards,
     scale 0.3s ease-in-out 0.9s both;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
 }
 
 .checkmark__circle {
@@ -325,10 +191,10 @@
 
 @media (max-width: 768px) {
   .comments-section {
-    padding: 10px;
-  }
+    padding: 15px;
 
-  .comment {
-    padding: 8px;
+    .comment-form {
+      padding: 20px;
+    }
   }
 }

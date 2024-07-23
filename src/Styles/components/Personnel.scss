@@ -1,177 +1,200 @@
-.personnel-page {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans&display=swap");
+
+.governance-personnel-page {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin-top: 40px;
+  background-color: #f8f9fa;
 
-  h1 {
-    font-size: 3em;
+  .governance-title {
+    font-size: 3.5em;
     text-align: center;
     margin-top: 20px;
     color: #192a56;
     font-family: "Montserrat", sans-serif;
     font-weight: 900;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 
-  p {
-    color: #000;
-    font-size: 1.2em;
-    margin-top: 10px;
+  .governance-description {
+    color: #333;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-top: 20px;
     width: 100%;
     text-align: justify;
-    font-family: "Arial", sans-serif;
+    font-family: "Open Sans", sans-serif;
   }
 
-  .tabs {
+  .governance-tabs {
     display: flex;
     justify-content: center;
     margin-bottom: 0;
     margin-top: 50px;
 
-    .tab {
-      padding: 0.5rem 5rem;
+    .governance-tab {
+      padding: 0.75rem 2rem;
       margin: 0 1rem;
       cursor: pointer;
-      border-bottom: 5px solid transparent;
-      transition: all 0.3s ease;
       color: #192a56;
       font-family: "Montserrat", sans-serif;
-      font-weight: 900;
-      font-size: 1.3rem;
-      border-bottom: 2px solid transparent;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-bottom: 3px solid transparent;
       transition: all 0.3s ease;
 
       &:hover {
-        border-bottom-color: #ccc;
+        border-bottom-color: #3498db;
       }
 
       &.active {
-        border-bottom-color: #007bff;
-        font-weight: bold;
+        border-bottom-color: #3498db;
+        color: #3498db;
       }
     }
   }
 
-  .single-card {
+  .governance-single-card {
     display: flex;
     justify-content: center;
   }
 
-  .carousel {
+  .governance-carousel {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 30px;
 
-    .cards {
+    .governance-cards {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 2rem;
     }
 
-    .nav-button {
+    .governance-nav-button {
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 2rem;
       cursor: pointer;
-      color: #007bff;
-      transition: color 0.3s ease;
+      color: #3498db;
+      transition: color 0.3s ease, transform 0.3s ease;
 
       &:hover {
-        color: darken(#007bff, 10%);
+        color: #2980b9;
+        transform: scale(1.1);
       }
 
       &:disabled {
-        color: #ccc;
+        color: #bdc3c7;
         cursor: not-allowed;
       }
     }
   }
 
-  .card {
+  .governance-card {
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
     text-align: center;
     width: 300px;
-    height: 260px;
+    height: 400px; // Hauteur fixe pour toutes les cartes
     margin-top: 50px;
-    transition: transform 0.3s ease;
-    border: 2px solid #192a56;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     }
 
-    .photo {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 1rem;
+    .governance-photo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
       overflow: hidden;
       border-radius: 50%;
+      border: 4px solid #3498db;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.3s ease;
       }
     }
 
-    h3 {
-      font-size: 1.2rem;
+    &:hover .governance-photo img {
+      transform: scale(1.1);
+    }
+
+    .governance-name {
+      font-size: 1.3rem;
       margin-bottom: 0.5rem;
       color: #192a56;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
     }
 
-    p {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 0.5rem;
+    .governance-job {
+      font-size: 1rem;
+      color: #7f8c8d;
+      margin-bottom: 1rem;
+      font-family: "Open Sans", sans-serif;
+      flex-grow: 1;
+      display: flex;
       align-items: center;
-      text-align: center;
+      justify-content: center;
     }
 
-    a {
-      color: #007bff;
-      font-size: 1.5rem;
-      transition: color 0.3s ease;
+    .governance-linkedin {
+      color: #3498db;
+      font-size: 1.8rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
 
       &:hover {
-        color: darken(#007bff, 10%);
+        color: #2980b9;
+        transform: scale(1.2);
       }
     }
   }
 }
 
 @media (max-width: 768px) {
-  .personnel-page {
+  .governance-personnel-page {
     padding: 1rem;
 
-    h1 {
-      font-size: 2rem;
+    .governance-title {
+      font-size: 2.5rem;
     }
 
-    .tabs {
+    .governance-tabs {
       flex-wrap: wrap;
 
-      .tab {
+      .governance-tab {
         margin-bottom: 0.5rem;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
       }
     }
 
-    .carousel {
-      .cards {
-        flex-direction: column;
-        align-items: center;
-      }
+    .governance-carousel .governance-cards {
+      flex-direction: column;
+      align-items: center;
     }
 
-    .card {
-      width: 80%;
-      max-width: 250px;
-      margin-bottom: 1rem;
+    .governance-card {
+      width: 90%;
+      max-width: 280px;
+      margin-bottom: 1.5rem;
     }
   }
 }

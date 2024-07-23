@@ -34,7 +34,6 @@ const LegislationDetail = () => {
     <>
       <Navigation />
       <div className="legislation-detail">
-        <h1>{legislation.type_display}</h1>
         <h2>{legislation.titre}</h2>
         <p className="date">
           Date de publication : {legislation.date_publication}

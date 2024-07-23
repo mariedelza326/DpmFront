@@ -17,50 +17,45 @@ const CarouselWrap = () => {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, []);
 
   useEffect(() => {
     if (carouselItems.length === 0) return;
-
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
     }, 9000);
-
     return () => clearInterval(interval);
   }, [carouselItems]);
 
   if (carouselItems.length === 0) {
-    return <div>Loading...</div>;
+    return <div className="loading">Chargement...</div>;
   }
 
   return (
     <div className="carousel-wrap">
       <h2 className="carousel-title">Mots du Directeur</h2>
       <div className="carousel-container">
-        <AnimatePresence initial={false}>
+        <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={currentIndex}
             className="carousel-item"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 0.3 }}
           >
             <motion.img
               src={carouselItems[currentIndex].image}
-              initial={{ opacity: 0, x: -300 }}
+              initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -300 }}
-              transition={{ duration: 1.9, ease: "easeInOut" }}
+              transition={{ duration: 0.5 }}
             />
             <motion.div
               className="carousel-content"
-              initial={{ opacity: 0, x: 300 }}
+              initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 300 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              transition={{ duration: 0.5 }}
             >
               <h3>{carouselItems[currentIndex].title}</h3>
               <p>{carouselItems[currentIndex].content}</p>

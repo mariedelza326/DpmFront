@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 const Comments = ({ actualiteId }) => {
@@ -56,17 +56,16 @@ const Comments = ({ actualiteId }) => {
                   d="M14.1 27.2l7.1 7.2 16.7-16.8"
                 />
               </svg>
-
-              <p> Merci de Nous Avoir Laisser un Commentaire</p>
+              <p>Merci de nous avoir laissé un commentaire !</p>
             </div>
           </div>
         </div>
       )}
       <div className="commone">
-        <h3>Laisser un commentaire</h3>
+        <h3>Votre avis compte</h3>
         <p className="mention">
-          Votre adresse e-mail ne sera pas publiée. Les champs obligatoires sont
-          indiqués avec *
+          Partagez vos pensées et impressions avec nous. Votre adresse e-mail ne
+          sera pas publiée.
         </p>
       </div>
       <form onSubmit={handleSubmit} className="comment-form">
@@ -74,23 +73,23 @@ const Comments = ({ actualiteId }) => {
           type="text"
           value={nom}
           onChange={(e) => setNom(e.target.value)}
-          placeholder="Votre nom Complet *"
+          placeholder="Votre nom complet *"
           required
         />
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Votre Email *"
+          placeholder="Votre email *"
           required
         />
         <textarea
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Laissez un commentaire... *"
+          placeholder="Partagez votre expérience ici... *"
           required
         />
-        <button type="submit">Publier</button>
+        <button type="submit">Envoyer mon commentaire</button>
       </form>
     </div>
   );

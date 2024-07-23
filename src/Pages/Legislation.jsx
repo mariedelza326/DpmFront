@@ -9,7 +9,7 @@ const Legislation = () => {
     <>
       <Navigation />
       <div className="landing-page">
-        <img src="../media/peche.png" alt="" className="profilio" />
+        <img src="../media/pecher.jpg" alt="" className="profilio" />
         <div className="contenue">
           <h1> Législation </h1>
           <p>

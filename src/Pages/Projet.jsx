@@ -13,7 +13,7 @@ const Projet = () => {
     <>
       <Navigation />
       <section className="hero">
-        <img src="../media/beach.jpg" alt="" className="profile" />
+        <img src="../media/po.jpg" alt="" className="profile" />
         <div className="hero-content">
           <h1>Projets & Programmes</h1>
           <p>
@@ -54,11 +54,9 @@ const Projet = () => {
         </div>
       </div>
       <Historique />
-      {/* <Project />
-      <Programme /> */}
-      <Menu />
+
       <HistoriqueProgramme />
-      <SubscriptionPage />
+
       <Footer />
     </>
   );

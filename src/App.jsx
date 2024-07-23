@@ -35,6 +35,7 @@ import LegislationDetail from "./Pages/DetailsLegislation";
 import Legislat from "./Pages/legislat";
 import Abrogee from "./Pages/Abrogee";
 import DetailAbrogee from "./Pages/DetailsAbrogee";
+import Accueil from "./Pages/Accueil";
 
 const usePageTitle = (defaultTitle) => {
   const location = useLocation();
@@ -83,6 +84,7 @@ const App = () => {
         <Route path="/documentdetails/:id" element={<DocumentDetails />} />
         <Route path="/features" element={<FeaturesCarousel />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/accueil" element={<Accueil />} />
         <Route
           path="/dashboard"
           element={
@@ -151,6 +153,7 @@ const PageTitleUpdater = ({ defaultTitle }) => {
       "/legislat": "Legislat",
       "/abrogee": "Abrogee",
       "/detailsabrogee/:id": "DetailAbrogee",
+      "/accueil": "Accueil",
     };
     const path = location.pathname;
     document.title = titles[path] || defaultTitle;

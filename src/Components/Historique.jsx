@@ -99,39 +99,44 @@ const Historique = () => {
   };
 
   return (
-    <>
-      <div className="app-container">
-        <h1>Projets</h1>
-        <Timeline
-          onCircleClick={handleCircleClick}
-          activeIndex={activeIndex}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          projects={projects}
-        />
-        {selectedProject && (
-          <div className={`story-display ${fade ? "fade" : ""}`}>
-            <h3>{selectedProject.titre}</h3>
-            <div className="story-titre">
-              <span className="debut">
-                Date debut:{selectedProject.date_debut}
-              </span>
-              <span className="fin">Date fin:{selectedProject.date_fin}</span>
-            </div>
-            <div className="dg">
-              <img src={selectedProject.image} alt={selectedProject.titre} />
-              <p>{truncateDescription(selectedProject.description)}</p>
-            </div>
-            <Link to={`/detailshistorique/${selectedProject.id}`}>
-              <button className="savoirplus">
-                En savoir plus <i className="fas fa-plus"></i>
-              </button>
-            </Link>
+    <div className="app-container">
+      <h1 className="app-title"> Projets</h1>
+      <Timeline
+        onCircleClick={handleCircleClick}
+        activeIndex={activeIndex}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        projects={projects}
+      />
+      {selectedProject && (
+        <div className={`story-display ${fade ? "fade" : ""}`}>
+          <h2 className="project-title">{selectedProject.titre}</h2>
+          <div className="project-dates">
+            <span className="date-debut">
+              Début: {selectedProject.date_debut}
+            </span>
+            <span className="date-fin">Fin: {selectedProject.date_fin}</span>
           </div>
-        )}
-      </div>
-    </>
+          <div className="project-content">
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.titre}
+              className="project-image"
+            />
+            <p className="project-description">
+              {truncateDescription(selectedProject.description)}
+            </p>
+          </div>
+          <Link
+            to={`/detailshistorique/${selectedProject.id}`}
+            className="savoir-plus-link"
+          >
+            <button className="savoirplus">En savoir plus</button>
+          </Link>
+        </div>
+      )}
+    </div>
   );
 };
 

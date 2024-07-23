@@ -62,6 +62,7 @@ const Dashboard = ({ username }) => {
       "commentaires",
       "personnel",
       "director-messages",
+      "statistics",
     ];
 
     for (const tab of tabs) {
@@ -244,6 +245,13 @@ const Dashboard = ({ username }) => {
           },
         ];
         break;
+      case "statistics":
+        fields = [
+          { name: "name", type: "text" },
+          { name: "value", type: "number" },
+          { name: "description", type: "text" },
+        ];
+        break;
       default:
         fields = [];
     }
@@ -365,6 +373,11 @@ const Dashboard = ({ username }) => {
                 <div>
                   <strong>{item.name}</strong> - {item.job} ({item.category})
                 </div>
+              ) : activeTab === "statistics" ? (
+                <div>
+                  <strong>{item.name}</strong> - {item.value}
+                  <p>{item.description}</p>
+                </div>
               ) : (
                 item.titre || item.title || item.nom
               )}
@@ -397,6 +410,7 @@ const Dashboard = ({ username }) => {
     "commentaires",
     "personnel",
     "director-messages",
+    "statistics",
     "inscription",
   ];
 

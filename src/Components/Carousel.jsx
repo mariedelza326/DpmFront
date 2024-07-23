@@ -39,7 +39,7 @@ const Carousel = () => {
   return (
     <>
       <div className="infos">
-        <h1>Accords signés</h1>
+        <h1>Activités</h1>
       </div>
       <div className="carousele">
         <div className="carousel-inner">

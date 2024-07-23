@@ -19,28 +19,30 @@ const Copoa = () => {
         console.error("Erreur lors de la récupération de l'actualité:", error);
       }
     };
-
     fetchProjects();
   }, [id]);
 
   if (!projet) {
-    return <div>veuillez patienter...</div>;
+    return <div className="loading">Veuillez patienter...</div>;
   }
+
   return (
-    <>
+    <div className="copoa-container">
       <Navigation />
-      <div className="actualite-detail">
-        <header className="actualite-header">
-          <h1 className="actualite-title">{projet.titre}</h1>
-          <p className="actualite-date">{projet.date_debut}</p>
+      <main className="projet-detail">
+        <header className="projet-header">
+          <h1 className="projet-title">{projet.titre}</h1>
+          <p className="projet-date">{projet.date_debut}</p>
         </header>
-        <img src={projet.image} alt="Actualité" className="actualite-image" />
-        <div className="actualite-content">
+        <div className="projet-image-container">
+          <img src={projet.image} alt={projet.titre} className="projet-image" />
+        </div>
+        <div className="projet-content">
           <p>{projet.description}</p>
         </div>
-      </div>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

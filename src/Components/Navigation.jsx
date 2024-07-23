@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
@@ -13,12 +13,29 @@ const Navigation = () => {
     setShowMenu(!showMenu);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sidebar = document.querySelector(".sidebar");
+      if (window.scrollY > 50) {
+        sidebar.classList.add("scrolled");
+      } else {
+        sidebar.classList.remove("scrolled");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="sidebar">
       <div className="id">
         <div className="idcontenent">
           <NavLink to="/" activeClassName="active">
-            <img src="../media/dpm.png" alt="profil" className="profil" />
+            <img src="/media/dpm.png" alt="profil" className="profil" />
           </NavLink>
         </div>
       </div>
@@ -29,6 +46,11 @@ const Navigation = () => {
         <ul>
           <li>
             <NavLink to="/" activeClassName="active">
+              Accueil
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/accueil" activeClassName="active">
               Presentation
             </NavLink>
           </li>
@@ -55,11 +77,6 @@ const Navigation = () => {
           <li>
             <NavLink to="https://www.facebook.com/profile.php?id=61553113512678&mibextid=LQQJ4d">
               <i className="fab fa-facebook-f"></i>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="https://www.facebook.com/profile.php?id=61553113512678&mibextid=LQQJ4d">
-              <i className="fab fa-instagram"></i>
             </NavLink>
           </li>
         </ul>

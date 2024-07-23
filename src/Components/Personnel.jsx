@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const PersonnelPage = () => {
   const [personnel, setPersonnel] = useState([]);
@@ -23,8 +24,8 @@ const PersonnelPage = () => {
 
   const tabs = [
     { title: "Directeur", category: "directeur" },
-    { title: "Equipes", category: "equipes" },
-    { title: "Chefs de région", category: "chefs_de_region" },
+    { title: "Équipes", category: "equipes" },
+    { title: "SRPS", category: "chefs_de_region" },
   ];
 
   const handleTabClick = (index) => {
@@ -52,24 +53,16 @@ const PersonnelPage = () => {
 
     if (tabs[activeTab].category === "directeur") {
       return (
-        <div className="single-card">
+        <motion.div
+          className="governance-single-card"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           {currentTabPersonnel.map((person) => (
-            <div key={person.id} className="card">
-              <div className="photo">
-                <img src={person.photo} alt={person.name} />
-              </div>
-              <h3>{person.name}</h3>
-              <p>{person.job}</p>
-              <a
-                href={person.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-linkedin"></i>
-              </a>
-            </div>
+            <GovernancePersonCard key={person.id} person={person} />
           ))}
-        </div>
+        </motion.div>
       );
     } else {
       const startIndex = carouselIndex * 3;
@@ -77,34 +70,33 @@ const PersonnelPage = () => {
       const visiblePeople = currentTabPersonnel.slice(startIndex, endIndex);
 
       return (
-        <div className="carousel">
+        <div className="governance-carousel">
           <button
-            className="nav-button prev"
+            className="governance-nav-button prev"
             onClick={handlePrevClick}
             disabled={carouselIndex === 0}
           >
             <i className="fas fa-chevron-left"></i>
           </button>
-          <div className="cards">
-            {visiblePeople.map((person) => (
-              <div key={person.id} className="card">
-                <div className="photo">
-                  <img src={person.photo} alt={person.name} />
-                </div>
-                <h3>{person.name}</h3>
-                <p>{person.job}</p>
-                <a
-                  href={person.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-linkedin"></i>
-                </a>
-              </div>
+          <motion.div
+            className="governance-cards"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {visiblePeople.map((person, index) => (
+              <motion.div
+                key={person.id}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <GovernancePersonCard person={person} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           <button
-            className="nav-button next"
+            className="governance-nav-button next"
             onClick={handleNextClick}
             disabled={endIndex >= currentTabPersonnel.length}
           >
@@ -116,9 +108,21 @@ const PersonnelPage = () => {
   };
 
   return (
-    <div className="personnel-page">
-      <h1>GOUVERNANCE</h1>
-      <p>
+    <div className="governance-personnel-page">
+      <motion.h1
+        className="governance-title"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        GOUVERNANCE
+      </motion.h1>
+      <motion.p
+        className="governance-description"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         La clé de voûte du développement de la Direction des Pêches Maritimes
         repose sur une équipe hautement performante et une gouvernance
         respectant les plus hauts standards internationaux. Grâce à une vision
@@ -130,21 +134,48 @@ const PersonnelPage = () => {
         communautés côtières. En adoptant des pratiques de gestion transparentes
         et inclusives, nous visons à renforcer la confiance et la collaboration
         avec tous nos partenaires et parties prenantes.
-      </p>
-      <div className="tabs">
+      </motion.p>
+      <motion.div
+        className="governance-tabs"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         {tabs.map((tab, index) => (
           <div
             key={index}
-            className={`tab ${activeTab === index ? "active" : ""}`}
+            className={`governance-tab ${activeTab === index ? "active" : ""}`}
             onClick={() => handleTabClick(index)}
           >
             {tab.title}
           </div>
         ))}
-      </div>
+      </motion.div>
       {renderCards()}
     </div>
   );
 };
+
+const GovernancePersonCard = ({ person }) => (
+  <motion.div
+    className="governance-card"
+    whileHover={{ scale: 1.05 }}
+    transition={{ duration: 0.3 }}
+  >
+    <div className="governance-photo">
+      <img src={person.photo} alt={person.name} />
+    </div>
+    <h3 className="governance-name">{person.name}</h3>
+    <p className="governance-job">{person.job}</p>
+    <a
+      className="governance-linkedin"
+      href={person.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i className="fab fa-linkedin"></i>
+    </a>
+  </motion.div>
+);
 
 export default PersonnelPage;

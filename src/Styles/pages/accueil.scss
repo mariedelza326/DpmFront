@@ -1,0 +1,26 @@
+.herodpm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding: var(--desktop-padding);
+
+  @media (max-width: 768px) {
+    padding: var(--mobile-padding);
+  }
+  .profit {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  img {
+    opacity: 0.8;
+  }
+}

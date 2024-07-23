@@ -212,7 +212,7 @@ const Docummente = () => {
         </div>
       )}
       <FeaturesCarousel />
-      <CarouselWrap />
+
       <Footer />
     </>
   );

@@ -101,38 +101,43 @@ const HistoriqueProgramme = () => {
   };
 
   return (
-    <>
-      <div className="app">
-        <h1>Programme</h1>
-        <Timeline
-          onCircleClick={handleCircleClick}
-          activeIndex={activeIndex}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          programmes={programmes}
-        />
-        {selectedProgramme && (
-          <div className={`story-display ${fade ? "fade" : ""}`}>
-            <h3>{selectedProgramme.nom}</h3>
-            <div className="histo">
-              <span className="histor">
-                Mise en Place le: {selectedProgramme.date_creation}
-              </span>
-            </div>
-            <div className="dg">
-              <img src={selectedProgramme.image} alt={selectedProgramme.nom} />
-              <p>{truncateDescription(selectedProgramme.description)}</p>
-            </div>
-            <Link to={`/detailsprogramme/${selectedProgramme.id}`}>
-              <button className="savoirplus">
-                En savoir plus <i className="fas fa-plus"></i>
-              </button>
-            </Link>
+    <div className="app-container">
+      <h1 className="app-tite">Programmes</h1>
+      <Timeline
+        onCircleClick={handleCircleClick}
+        activeIndex={activeIndex}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        programmes={programmes}
+      />
+      {selectedProgramme && (
+        <div className={`story-display ${fade ? "fade" : ""}`}>
+          <h2 className="programme-title">{selectedProgramme.nom}</h2>
+          <div className="programme-date">
+            <span>Mise en place le: {selectedProgramme.date_creation}</span>
           </div>
-        )}
-      </div>
-    </>
+          <div className="programme-content">
+            <img
+              src={selectedProgramme.image}
+              alt={selectedProgramme.nom}
+              className="programme-image"
+            />
+            <p className="programme-description">
+              {truncateDescription(selectedProgramme.description)}
+            </p>
+          </div>
+          <Link
+            to={`/detailsprogramme/${selectedProgramme.id}`}
+            className="savoir-plus-link"
+          >
+            <button className="savoirplus">
+              En savoir plus <i className="fas fa-arrow-right"></i>
+            </button>
+          </Link>
+        </div>
+      )}
+    </div>
   );
 };
 

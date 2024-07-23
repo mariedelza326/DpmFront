@@ -23,8 +23,8 @@ const Contact = () => {
       <div className="contact-container">
         <div className="header">
           <div className="title-bar"></div>
-          <h1 className="dpms">Que pouvons-nous faire pour vous?</h1>
-          <p>Nous serons ravis de répondre à vos besoins.</p>
+          <h1 className="dpms">Comment pouvons-nous vous aider ?</h1>
+          <p>Nous sommes à votre écoute pour répondre à tous vos besoins.</p>
         </div>
         <div className="card-containerio">
           <Card
@@ -75,7 +75,6 @@ const Card = ({ icon, title, text }) => {
     </div>
   );
 };
-
 const Form = () => {
   const [formData, setFormData] = useState({
     prenom: "",
@@ -85,20 +84,28 @@ const Form = () => {
     message: "",
   });
   const [showPopup, setShowPopup] = useState(false);
+  const [focusedField, setFocusedField] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "telephone") {
-      // Permet uniquement les chiffres
       const numericValue = value.replace(/\D/g, "");
       setFormData({ ...formData, [name]: numericValue });
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
+
+  const handleFocus = (field) => {
+    setFocusedField(field);
+  };
+
+  const handleBlur = () => {
+    setFocusedField(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Vérification de la longueur du numéro de téléphone
     if (formData.telephone.length < 9) {
       alert("Le numéro de téléphone doit contenir au moins 9 chiffres.");
       return;
@@ -131,50 +138,90 @@ const Form = () => {
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <div className="form-row">
-          <input
-            type="text"
-            name="prenom"
-            placeholder="Prénom *"
-            required
-            value={formData.prenom}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="nom"
-            placeholder="Nom *"
-            required
-            value={formData.nom}
-            onChange={handleChange}
-          />
+          <div
+            className={`input-container ${
+              focusedField === "prenom" ? "focused" : ""
+            }`}
+          >
+            <input
+              type="text"
+              name="prenom"
+              required
+              value={formData.prenom}
+              onChange={handleChange}
+              onFocus={() => handleFocus("prenom")}
+              onBlur={handleBlur}
+            />
+            <label>Prénom *</label>
+          </div>
+          <div
+            className={`input-container ${
+              focusedField === "nom" ? "focused" : ""
+            }`}
+          >
+            <input
+              type="text"
+              name="nom"
+              required
+              value={formData.nom}
+              onChange={handleChange}
+              onFocus={() => handleFocus("nom")}
+              onBlur={handleBlur}
+            />
+            <label>Nom *</label>
+          </div>
         </div>
         <div className="form-row">
-          <input
-            type="email"
-            name="email"
-            placeholder="Email *"
-            required
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <input
-            type="tel"
-            name="telephone"
-            placeholder="Téléphone * "
-            required
-            value={formData.telephone}
-            onChange={handleChange}
-            pattern="\d*"
-            minLength="9"
-          />
+          <div
+            className={`input-container ${
+              focusedField === "email" ? "focused" : ""
+            }`}
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              onFocus={() => handleFocus("email")}
+              onBlur={handleBlur}
+            />
+            <label>Email *</label>
+          </div>
+          <div
+            className={`input-container ${
+              focusedField === "telephone" ? "focused" : ""
+            }`}
+          >
+            <input
+              type="tel"
+              name="telephone"
+              required
+              value={formData.telephone}
+              onChange={handleChange}
+              onFocus={() => handleFocus("telephone")}
+              onBlur={handleBlur}
+              pattern="\d*"
+              minLength="9"
+            />
+            <label>Téléphone *</label>
+          </div>
         </div>
-        <textarea
-          name="message"
-          placeholder="Message *"
-          required
-          value={formData.message}
-          onChange={handleChange}
-        ></textarea>
+        <div
+          className={`input-container textarea ${
+            focusedField === "message" ? "focused" : ""
+          }`}
+        >
+          <textarea
+            name="message"
+            required
+            value={formData.message}
+            onChange={handleChange}
+            onFocus={() => handleFocus("message")}
+            onBlur={handleBlur}
+          ></textarea>
+          <label>Message *</label>
+        </div>
         <button type="submit" className="bout">
           Envoyer
         </button>
