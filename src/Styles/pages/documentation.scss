@@ -36,9 +36,7 @@
   left: 0;
   z-index: -1;
 }
-.contentamarie {
-  color: red;
-}
+
 .documente-content {
   margin-left: 20px;
   color: white;
@@ -48,9 +46,10 @@
   padding: 20px;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
-  &:hover {
-    transform: translateY(-10px);
-  }
+}
+
+.documente-content:hover {
+  transform: translateY(-10px);
 }
 
 .documente-content h1 {
@@ -65,49 +64,29 @@
 .documente-content p {
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: $white;
+  color: white;
   font-weight: 900;
   margin-left: 80px;
   width: 80%;
   text-align: justify;
   text-justify: inter-word;
 }
+
 .docmente h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
   text-align: center;
   font-weight: 900;
-  font-family: var(--font-1);
-  transition: transform 0.3s ease-in-out;
-  animation: slideIn 1s ease-in-out;
-
-  &:hover {
-    transform: translateY(-10px);
-  }
+  font-family: "Montserrat", sans-serif;
 }
-.custom-title {
-  font-size: 3rem;
-  margin-bottom: 10px;
-  text-align: center;
-  font-weight: 900;
-  font-family: var(--font-1);
-  transition: transform 0.3s ease-in-out;
-  animation: slideIn 1s ease-in-out;
 
-  &:hover {
-    transform: translateY(-10px);
-  }
-}
 .links-container {
   display: flex;
   justify-content: space-around;
   margin: 20px 0;
   margin-top: 60px;
 }
-.more-info-btn {
-  text-decoration: none;
-  list-style: none;
-}
+
 .link {
   background-color: #192a56;
   padding: 10px 20px;
@@ -115,235 +94,278 @@
   cursor: pointer;
   color: white;
   font-family: "Montserrat", sans-serif;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+}
 
-  &:hover {
-    background-color: var(--color-2);
-    font-size: 20px;
-    font-family: var(--font-1);
-  }
+.link:hover {
+  background-color: var(--color-1);
+  font-size: 20px;
+  font-family: var(--font-1);
+}
+
+.link.active {
+  background: linear-gradient(135deg, #192a56, #ec6ead);
+  font-weight: bold;
+  color: black;
+}
+
+.link.inactive {
+  background-color: #192a56;
 }
 
 .card-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
   margin-top: 50px;
-  margin-left: 50px;
-}
-.see-less-btn,
-.see-more-btn {
-  background: var(--color-1);
-  color: $white;
-  font-family: $font-2;
-  border: none;
-  font-weight: 800;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  margin-left: 200px;
-  margin-top: 50px;
-  font-size: 1em;
-  span {
-    margin-left: 10px;
-    display: inline-block;
-    transition: transform 0.3s;
-
-    &:hover {
-      transform: translateX(5px);
-    }
-  }
-
-  &:hover {
-    background: $white;
-    color: $black;
-  }
+  padding: 0 50px;
 }
 
 .card-item {
   background-color: white;
   border-radius: var(--borderRadius);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-  margin: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 300px;
-  height: 400px;
-  animation: fadeIn 0.5s ease-in-out;
-
-  img {
-    width: 300px;
-    height: 200px;
-    margin-top: -20px;
-    margin-left: -20px;
-    border-radius: var(--borderRadius);
-  }
-
-  h2 {
-    font-size: 1.3rem;
-    margin: 10px 0;
-  }
-
-  p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
-
-  .more-info-btn {
-    display: flex;
-    align-items: center;
-    color: white;
-    padding: 10px;
-    background-color: #192a56;
-    border: none;
-    border-radius: var(--borderRadius);
-    cursor: pointer;
-    font-family: "Montserrat", sans-serif;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: var(--color-2);
-    }
-
-    .arrow-icon {
-      margin-left: 5px;
-    }
-  }
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.custom-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 60px;
-  gap: 5px;
-  align-items: flex-start;
-}
-.see-less-btn,
-.see-more-btn {
-  background-color: #192a56;
+.card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.first-section,
-.second-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 100px;
-  margin-bottom: 50px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+.card-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--borderRadius);
+  margin-bottom: 15px;
 }
 
-.custom-content {
-  flex: 1;
-  margin-right: 20px;
-
-  @media (max-width: 768px) {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-}
-.texte-link {
-  text-decoration: none;
-  list-style: none;
+.card-item h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
   color: var(--color-1);
 }
 
-.custom-title {
-  font-size: 24px;
-  margin-bottom: 10px;
+.card-item p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 15px;
 }
 
-.custom-text {
-  font-size: 16px;
-  width: 100%;
-  text-align: justify;
-  text-justify: inter-word;
+.more-info-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #192a56;
+  color: white;
+  text-decoration: none;
+  border-radius: var(--borderRadius);
+  transition: background-color 0.3s ease;
 }
 
-.custom-image {
-  flex: 1;
+.more-info-btn:hover {
+  background-color: var(--color-1);
+}
+
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  margin-top: 40px;
-  margin-right: 200px;
-  animation: zoomIn 1s ease-in-out;
-
-  img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover {
-    transform: scale(1.1);
-  }
+  margin-top: 30px;
 }
 
-.flex-layout {
+.pagination button {
+  background-color: #192a56;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: var(--borderRadius);
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover,
+.pagination button.active {
+  background-color: $color-1;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Styles for Fishing Calendar */
+.fishing-calendar {
+  padding: 50px;
+  background-color: #f9f9f9;
+}
+
+.fishing-calendar h2 {
   text-align: center;
-  padding: 20px;
-
-  .title {
-    margin-bottom: 20px;
-    font-size: 2em;
-  }
-
-  .flex-container {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-
-    .box {
-      background-color: #f0f0f0;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      margin: 10px;
-      flex: 1;
-      max-width: 30%;
-      min-width: 100px; /* Ensures a minimum width */
-      box-sizing: border-box;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: translateY(-5px);
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    .flex-container {
-      flex-direction: column;
-      align-items: center;
-
-      .box {
-        max-width: none;
-        width: 80%;
-        margin-bottom: 20px;
-      }
-    }
-  }
+  color: #192a56;
+  margin-bottom: 30px;
 }
 
-@media (max-width: 768px) {
-  .section {
-    flex-direction: column;
-  }
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
 
-  .section.reverse {
-    flex-direction: column;
-  }
+.season-card {
+  background-color: white;
+  border-radius: var(--borderRadius);
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.season-card:hover {
+  transform: translateY(-5px);
+}
+
+.season-card h3 {
+  color: #192a56;
+  margin-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+.season-card p {
+  color: $color-1;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+
+.season-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.season-card li {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Styles for Fishing Zones */
+.fishing-zones {
+  padding: 50px;
+}
+
+.fishing-zones h2 {
+  text-align: center;
+  color: #192a56;
+  margin-bottom: 30px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.zone-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.zone {
+  flex: 1;
+  background-color: white;
+  border-radius: var(--borderRadius);
+  padding: 20px;
+  box-shadow: 0 15px 20px #192a56;
+}
+
+.zone h3 {
+  color: #192a56;
+  margin-bottom: 15px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.zone ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.zone li {
+  margin-bottom: 10px;
+  color: #333;
+}
+.docomente h2 {
+  margin-top: 80px;
+  text-align: center;
+  color: #192a56;
+  margin-bottom: 30px;
+  font-family: "Montserrat", sans-serif;
+}
+.penalties {
+  margin-top: 50px;
+  background-color: red;
+  border-radius: var(--borderRadius);
+  padding: 20px;
+}
+
+.penalties h3 {
+  color: #192a56;
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Styles for Protected Species */
+.protected-species {
+  padding: 50px;
+}
+
+.protected-species h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #192a56;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+.espece {
+  margin-bottom: 30px;
+  width: 105%;
+  text-align: justify;
+  text-justify: inter-word;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+}
+.species-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.species-card {
+  background-color: white;
+  border-radius: var(--borderRadius);
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.species-card:hover {
+  transform: translateY(-5px);
+}
+
+.species-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--borderRadius);
+  margin-bottom: 15px;
+}
+
+.species-card h3 {
+  color: #192a56;
+  margin-bottom: 10px;
+}
+
+.species-card p {
+  color: #333;
 }
 
 @keyframes slideIn {
@@ -367,8 +389,15 @@
 }
 
 @media (max-width: 768px) {
-  .card-item {
-    width: 100%;
-    max-width: 300px;
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .zone-info {
+    flex-direction: column;
+  }
+
+  .species-grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,0 +1,85 @@
+.discovery-accordion {
+  background: linear-gradient(135deg, #192a56, #ec6ead);
+  padding: 4rem 2rem;
+  color: #ffffff;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .accordion-container {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+
+  .accordion-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &.active {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .accordion-title {
+    width: 100%;
+    padding: 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .accordion-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .active .accordion-icon {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    p {
+      padding: 0 1.5rem 1.5rem;
+      line-height: 1.6;
+    }
+  }
+
+  .active .accordion-content {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .discovery-accordion {
+    padding: 3rem 1rem;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .accordion-title {
+      font-size: 1.1rem;
+      padding: 1.2rem;
+    }
+  }
+}

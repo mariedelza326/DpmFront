@@ -9,9 +9,11 @@
 
 .gallery {
   margin-top: -100px;
+
   h1 {
     margin-top: 150px;
   }
+
   .tabs {
     display: flex;
     justify-content: space-around;
@@ -33,7 +35,6 @@
         color: #192a56;
         font-family: "Montserrat", sans-serif;
         font-weight: 800;
-        font-family: var(--font-1);
       }
     }
   }
@@ -44,10 +45,7 @@
 
     .images {
       display: grid;
-      grid-template-columns: repeat(
-        4,
-        1fr
-      ); /* Adjust to show 4 images per row */
+      grid-template-columns: repeat(4, 1fr);
       grid-gap: 1rem;
 
       .image-item {
@@ -68,37 +66,49 @@
   }
 }
 
-.button-container {
+.pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 20px;
+
+  .pagination-button {
+    background-color: #192a56;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      background-color: #1e3799;
+    }
+
+    &:active {
+      background-color: #192a56;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      transform: translateY(1px);
+    }
+
+    &:disabled {
+      background-color: #b2bec3;
+      cursor: not-allowed;
+    }
+  }
+
+  .page-info {
+    font-size: 16px;
+    margin: 0 10px;
+  }
 }
 
-.gallery-button {
-  background-color: #192a56;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.gallery-button:hover {
-  background-color: #192a56; /* Vert plus foncé */
-}
-
-.gallery-button:active {
-  background-color: #192a56; /* Vert encore plus foncé */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  transform: translateY(1px);
-}
 .modal {
   position: fixed;
   top: 0;
@@ -148,9 +158,8 @@
   .gallery .tab {
     flex-basis: calc(50% - 1rem);
   }
-
   .images .images {
-    grid-template-columns: repeat(2, 1fr); /* Adjust to show 2 images per row */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -158,8 +167,7 @@
   .gallery .tab {
     flex-basis: 100%;
   }
-
   .images .images {
-    grid-template-columns: repeat(1, 1fr); /* Adjust to show 1 image per row */
+    grid-template-columns: repeat(1, 1fr);
   }
 }

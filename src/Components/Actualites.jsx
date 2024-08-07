@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Actualites = () => {
   const [newsData, setNewsData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -15,6 +19,14 @@ const Actualites = () => {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const handleNewsClick = (newsId) => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      navigate(`/detailactualite/${newsId}`);
+    }, 1500);
+  };
 
   const settings = {
     dots: true,
@@ -40,6 +52,14 @@ const Actualites = () => {
     ],
   };
 
+  if (loading) {
+    return (
+      <div className="spinner-overlay">
+        <ClipLoader color={"#192a56"} loading={loading} size={80} />
+      </div>
+    );
+  }
+
   return (
     <div className="actualites">
       <header>
@@ -48,17 +68,18 @@ const Actualites = () => {
       <Slider {...settings}>
         {newsData.map((news) => (
           <div key={news.id} className="card">
-            <a href={`/detailactualite/${news.id}`}>
+            <div onClick={() => handleNewsClick(news.id)}>
               <div className="image-container">
                 <img src={news.image} alt={news.titre} />
                 <div className="date">
+                  Publie le:
                   {new Date(news.date_publication).toLocaleDateString()}
                 </div>
               </div>
               <div className="card-content">
                 <h2>{news.titre}</h2>
               </div>
-            </a>
+            </div>
           </div>
         ))}
       </Slider>

@@ -5,11 +5,13 @@ import Footer from "../Components/Footer";
 import { Link } from "react-router-dom";
 import FeaturesCarousel from "../Components/Features";
 import CarouselWrap from "../Components/CarouselWrap";
+import DiscoveryAccordion from "../Components/Accordion";
+
 const Docummente = () => {
   const [newsData, setNewsData] = useState([]);
-  const [activeLink, setActiveLink] = useState("link1");
-  const [cardsToShow, setCardsToShow] = useState(3);
-  const initialCardsToShow = 3;
+  const [activeLink, setActiveLink] = useState("link5");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
 
   useEffect(() => {
     axios
@@ -25,16 +27,18 @@ const Docummente = () => {
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
-    setCardsToShow(initialCardsToShow);
+    setCurrentPage(1);
   };
 
-  const handleShowMore = () => {
-    setCardsToShow(cardsToShow + 9000);
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
-  const handleShowLess = () => {
-    setCardsToShow(initialCardsToShow);
-  };
+  const totalPages = Math.ceil(newsData.length / itemsPerPage);
+  const currentItems = newsData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   const truncateDescription = (description, wordLimit) => {
     const words = description.split(" ");
@@ -62,22 +66,38 @@ const Docummente = () => {
         </div>
       </div>
       <div className="docmente">
-        <h2>Explorer La Documentation</h2>
+        <h2>L'Univers de la Pêche </h2>
       </div>
       <div className="links-container">
-        <div className="link" onClick={() => handleLinkClick("link1")}>
+        <div
+          className={`link ${activeLink === "link5" ? "active" : ""}`}
+          onClick={() => handleLinkClick("link5")}
+        >
+          Zones de pêche
+        </div>
+        <div
+          className={`link ${activeLink === "link1" ? "active" : ""}`}
+          onClick={() => handleLinkClick("link1")}
+        >
           Rapports Statiques
         </div>
-        <div className="link" onClick={() => handleLinkClick("link3")}>
-          Categories
+        <div
+          className={`link ${activeLink === "link3" ? "active" : ""}`}
+          onClick={() => handleLinkClick("link3")}
+        >
+          Calendrier des saisons de pêche
         </div>
-        <div className="link" onClick={() => handleLinkClick("link4")}>
-          Politiques & Strategies
+
+        <div
+          className={`link ${activeLink === "link4" ? "active" : ""}`}
+          onClick={() => handleLinkClick("link4")}
+        >
+          Espèces protégées
         </div>
       </div>
       {activeLink === "link1" && (
         <div className="card-container">
-          {newsData.slice(0, cardsToShow).map((item, index) => (
+          {currentItems.map((item, index) => (
             <div className="card-item" key={index}>
               <img src={item.image} alt={item.titre} />
               <h2>{item.titre}</h2>
@@ -86,7 +106,6 @@ const Docummente = () => {
                 <i className="fas fa-calendar"></i>{" "}
                 {new Date(item.date_publication).toLocaleDateString()}
               </p>
-
               <Link
                 to={`/documentdetails/${item.id}`}
                 className="more-info-btn"
@@ -95,124 +114,164 @@ const Docummente = () => {
               </Link>
             </div>
           ))}
-          <div className="buttons-container">
-            {cardsToShow < newsData.length && (
-              <button className="see-more-btn" onClick={handleShowMore}>
-                Les plus Anciens<span>&#x2192;</span>
+          <div className="pagination">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              &laquo; Précédent
+            </button>
+            {[...Array(totalPages)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => handlePageChange(i + 1)}
+                className={currentPage === i + 1 ? "active" : ""}
+              >
+                {i + 1}
               </button>
-            )}
-            {cardsToShow > initialCardsToShow && (
-              <button className="see-less-btn" onClick={handleShowLess}>
-                Les plus recents<span>&#x2192;</span>
-              </button>
-            )}
+            ))}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Suivant &raquo;
+            </button>
           </div>
         </div>
       )}
       {activeLink === "link3" && (
-        <div className="flex-layout">
-          <h1 className="title">Catégorie : MESA</h1>
-          <div className="flex-container">
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA – CEDEAO
-              </a>
+        <div className="fishing-calendar">
+          <h2>Calendrier des saisons de pêche</h2>
+          <div className="season-grid">
+            <div className="season-card">
+              <h3>Printemps</h3>
+              <p>Mars - Mai</p>
+              <ul>
+                <li>Thiof (Mérou blanc)</li>
+                <li>Sardinelle</li>
+                <li>Dorade royale</li>
+              </ul>
             </div>
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA Quatrième Trimestre 2018
-              </a>
+            <div className="season-card">
+              <h3>Été</h3>
+              <p>Juin - Août</p>
+              <ul>
+                <li>Thon</li>
+                <li>Espadon</li>
+                <li>Barracuda</li>
+              </ul>
             </div>
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA Troisième Trimestre 2018
-              </a>
+            <div className="season-card">
+              <h3>Automne</h3>
+              <p>Septembre - Novembre</p>
+              <ul>
+                <li>Capitaine</li>
+                <li>Sole</li>
+                <li>Carpe rouge</li>
+              </ul>
+            </div>
+            <div className="season-card">
+              <h3>Hiver</h3>
+              <p>Décembre - Février</p>
+              <ul>
+                <li>Pageot</li>
+                <li>Mérou noir</li>
+                <li>Rouget</li>
+              </ul>
             </div>
           </div>
-          <div className="flex-container">
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA Deuxième Trimestre 2018
-              </a>
+        </div>
+      )}
+      {activeLink === "link5" && (
+        <div className="fishing-zones">
+          <h2>Zones de pêche au Sénégal</h2>
+          <div className="zone-info">
+            <div className="zone authorized">
+              <h3>Zones autorisées</h3>
+              <ul>
+                <li>Zone Économique Exclusive (ZEE) du Sénégal</li>
+                <li>Eaux territoriales (12 milles nautiques)</li>
+                <li>Certaines zones côtières réglementées</li>
+              </ul>
             </div>
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA Premier Trimestre 2018
-              </a>
-            </div>
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA Décembre 2017
-              </a>
+            <div className="zone unauthorized">
+              <h3>Zones non autorisées</h3>
+              <ul>
+                <li>Aires Marines Protégées (AMP)</li>
+                <li>Zones de reproduction des poissons</li>
+                <li>Certaines zones côtières sensibles</li>
+              </ul>
             </div>
           </div>
-          <div className="flex-container">
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA Novembre 2017
-              </a>
-            </div>
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA Octobre 2017
-              </a>
-            </div>
-            <div className="box">
-              <a href="#" className="texte-link">
-                MESA Septembre 2017
-              </a>
-            </div>
+          <div className="docomente">
+            <h2>Attention aux zones interdit!</h2>
+          </div>
+          <div className="penalties">
+            <h3>Sanctions pour pêche illégale</h3>
+            <ul>
+              <li>Amendes pouvant aller jusqu'à 1 milliard de FCFA</li>
+              <li>Confiscation du navire et des équipements</li>
+              <li>Retrait de la licence de pêche</li>
+              <li>Peines d'emprisonnement pour les cas graves</li>
+            </ul>
           </div>
         </div>
       )}
       {activeLink === "link4" && (
-        <div className="custom-container">
-          <section className="first-section">
-            <div className="custom-content">
-              <h2 className="custom-title">Politiques</h2>
-              <p className="custom-text">
-                La Direction des Pêches Maritimes s'engage à promouvoir la
-                durabilité des ressources marines, assurer une gestion efficace
-                des pêches et soutenir les communautés côtières. Nos politiques
-                visent à protéger les écosystèmes marins tout en maximisant les
-                bénéfices économiques et sociaux des pêches. Nous adoptons une
-                approche écosystémique pour gérer les ressources, en veillant à
-                ce que les activités de pêche ne compromettent pas la capacité
-                des écosystèmes à se renouveler. Cela inclut la mise en œuvre de
-                quotas de capture basés sur des données scientifiques,
-                l'interdiction de la pêche dans certaines zones protégées et la
-                promotion de pratiques de pêche sélectives.
+        <div className="protected-species">
+          <h2>Espèces marines protégées au Sénégal</h2>
+          <p className="espece">
+            Ces espèces sont protégées par des lois nationales et
+            internationales en raison de leur vulnérabilité et de la nécessité
+            de préserver la biodiversité marine. La protection de ces espèces
+            implique des mesures de conservation telles que l'interdiction de la
+            chasse, de la capture et de la vente, ainsi que la mise en place de
+            zones marines protégées et de programmes de sensibilisation.
+          </p>
+          <div className="species-grid">
+            <div className="species-card">
+              <img src="./media/tortue.jpg" alt="Tortue marine" />
+              <h3>Tortues marines</h3>
+              <p>
+                Les tortues marines jouent un rôle crucial dans l'écosystème
+                marin. Toutes les espèces sont protégées pour préserver leur
+                population en déclin.
               </p>
             </div>
-            <div className="custom-image">
-              <img src="../media/boate.jpg" alt="Image1" />
-            </div>
-          </section>
-          <section className="second-section">
-            <div className="custom-image">
-              <img src="../media/sailing.jpg" alt="Image2" />
-            </div>
-            <div className="custom-content">
-              <h2 className="custom-title">Stratégies</h2>
-              <p className="custom-text">
-                Pour mettre en œuvre nos politiques, nous avons élaboré des
-                stratégies spécifiques. Nous investissons dans le renforcement
-                des capacités de surveillance et de contrôle des activités de
-                pêche, utilisant des technologies avancées comme le suivi par
-                satellite des navires et la mise en place de systèmes de
-                contrôle électronique des captures. Nous améliorons nos systèmes
-                de collecte et d'analyse des données sur les stocks de poissons,
-                les captures et les efforts de pêche. En collaboration avec des
-                institutions de recherche, nous menons des études régulières
-                pour évaluer l'état des ressources marines et adapter nos
-                politiques.
+            <div className="species-card">
+              <img src="./media/lamantin.jpeg" alt="Lamantin" />
+              <h3>Lamantin d'Afrique</h3>
+              <p>
+                Le lamantin d'Afrique, Trichechus senegalensis, est une espèce
+                vulnérable dont la protection est essentielle pour maintenir
+                l'équilibre de son habitat.
               </p>
             </div>
-          </section>
+            <div className="species-card">
+              <img src="./media/Dauphins.jpeg" alt="Dauphin" />
+              <h3>Dauphins</h3>
+              <p>
+                Les dauphins, avec leur intelligence remarquable, sont protégés
+                pour éviter leur capture et exploitation abusive. Toutes les
+                espèces sont protégées.
+              </p>
+            </div>
+            <div className="species-card">
+              <img src="./media/Hippocampes.jpeg" alt="Hippocampe" />
+              <h3>Hippocampes</h3>
+              <p>
+                Les hippocampes, fascinantes créatures marines, sont entièrement
+                protégées afin de préserver leur fragile habitat et assurer leur
+                survie pour les générations futures.
+              </p>
+            </div>
+          </div>
         </div>
       )}
       <FeaturesCarousel />
+      <DiscoveryAccordion />
 
+      <div className="voir"></div>
       <Footer />
     </>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Navigation from "../Components/Navigation";
 import Footer from "../Components/Footer";
+import FAQ from "../Components/Faq";
 
 const Contact = () => {
   const scrollToBottom = () => {
@@ -61,6 +62,8 @@ const Contact = () => {
         </iframe>
       </div>
       <div className="voir"></div>
+      <FAQ />
+
       <Footer />
     </>
   );
@@ -75,6 +78,7 @@ const Card = ({ icon, title, text }) => {
     </div>
   );
 };
+
 const Form = () => {
   const [formData, setFormData] = useState({
     prenom: "",
@@ -84,7 +88,9 @@ const Form = () => {
     message: "",
   });
   const [showPopup, setShowPopup] = useState(false);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [focusedField, setFocusedField] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -106,10 +112,15 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.telephone.length < 9) {
-      alert("Le numéro de téléphone doit contenir au moins 9 chiffres.");
+    const phoneRegex = /^(70|75|76|77|78)\d{7}$/;
+    if (!phoneRegex.test(formData.telephone)) {
+      setErrorMessage(
+        "Numéro de telephone incorrect veuillez saisir le bon Numéro merci !!"
+      );
+      setShowErrorPopup(true);
       return;
     }
+    setErrorMessage("");
     try {
       const response = await axios.post(
         "http://localhost:8000/api/message/",
@@ -126,12 +137,18 @@ const Form = () => {
       setShowPopup(true);
     } catch (error) {
       console.error("Error sending message:", error);
-      alert("Error sending message. Please try again.");
+      setErrorMessage("Error sending message. Please try again.");
+      setShowErrorPopup(true);
     }
   };
 
   const closePopup = () => {
     setShowPopup(false);
+  };
+
+  const closeErrorPopup = () => {
+    setShowErrorPopup(false);
+    setErrorMessage("");
   };
 
   return (
@@ -201,8 +218,6 @@ const Form = () => {
               onChange={handleChange}
               onFocus={() => handleFocus("telephone")}
               onBlur={handleBlur}
-              pattern="\d*"
-              minLength="9"
             />
             <label>Téléphone *</label>
           </div>
@@ -227,9 +242,13 @@ const Form = () => {
         </button>
       </form>
       {showPopup && <SuccessPopup onClose={closePopup} />}
+      {showErrorPopup && (
+        <ErrorPopup message={errorMessage} onClose={closeErrorPopup} />
+      )}
     </div>
   );
 };
+
 const SuccessPopup = ({ onClose }) => {
   return (
     <div className="success-popup">
@@ -240,6 +259,21 @@ const SuccessPopup = ({ onClose }) => {
         <div className="success-icon">✔</div>
         <h2>Message envoyé avec succès!</h2>
         <p>Nous vous répondrons dans les plus brefs délais.</p>
+      </div>
+    </div>
+  );
+};
+
+const ErrorPopup = ({ message, onClose }) => {
+  return (
+    <div className="error-popup">
+      <div className="error-popup-content">
+        <button className="close-button" onClick={onClose}>
+          ×
+        </button>
+
+        <h2>Erreur</h2>
+        <p>{message}</p>
       </div>
     </div>
   );

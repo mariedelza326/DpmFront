@@ -7,7 +7,6 @@ import {
   Navigation,
   Autoplay,
 } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -15,6 +14,7 @@ import "swiper/css/navigation";
 
 const FeaturesCarousel = () => {
   const [features, setFeatures] = useState([]);
+  const [selectedFeature, setSelectedFeature] = useState(null);
 
   useEffect(() => {
     const fetchFeatures = async () => {
@@ -25,14 +25,21 @@ const FeaturesCarousel = () => {
         console.error("Error fetching features:", error);
       }
     };
-
     fetchFeatures();
   }, []);
+
+  const openPopup = (feature) => {
+    setSelectedFeature(feature);
+  };
+
+  const closePopup = () => {
+    setSelectedFeature(null);
+  };
 
   return (
     <>
       <div className="divisionne">
-        <h1>Direction des Pêches Maritime</h1>
+        <h1>Conseils et Techniques de Pêche</h1>
       </div>
       <div className="features-carousel">
         <Swiper
@@ -41,7 +48,7 @@ const FeaturesCarousel = () => {
           centeredSlides={true}
           slidesPerView={"auto"}
           coverflowEffect={{
-            rotate: 50,
+            rotate: 30,
             stretch: 0,
             depth: 100,
             modifier: 1,
@@ -64,6 +71,7 @@ const FeaturesCarousel = () => {
               <div
                 className="feature-card"
                 style={{ backgroundImage: `url(${feature.image})` }}
+                onClick={() => openPopup(feature)}
               >
                 <h3>{feature.title}</h3>
               </div>
@@ -71,6 +79,15 @@ const FeaturesCarousel = () => {
           ))}
         </Swiper>
       </div>
+      {selectedFeature && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h2>{selectedFeature.title}</h2>
+            <p>{selectedFeature.description}</p>
+            <button onClick={closePopup}>Fermer</button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

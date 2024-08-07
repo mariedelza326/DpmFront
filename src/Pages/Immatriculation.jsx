@@ -12,7 +12,7 @@ const Immatriculation = () => {
           <h2>Immatriculation d’embarcation de type artisanal</h2>
         </div>
         <div className="contentees">
-          <div className="section01">
+          <div className="info-section">
             <h2>I. Cadre juridique de l’immatriculation</h2>
             <p>
               Tenant compte des mutations intervenues dans le secteur, le
@@ -28,7 +28,7 @@ const Immatriculation = () => {
               avec les acteurs concernés.
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>II. Immatriculation d’une nouvelle embarcation </h2>
             <p>
               Toute nouvelle acquisition d’une embarcation de type artisanal
@@ -43,7 +43,7 @@ const Immatriculation = () => {
               système.
             </p>
           </div>
-          <div className="section03">
+          <div className="info-section">
             <h2>III.Immatriculation d’une ancienne embarcation</h2>
             <p>
               Une ancienne embarcation jamais immatriculée dans le système doit
@@ -55,7 +55,7 @@ const Immatriculation = () => {
               commission de visite technique.
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>IV. Modification</h2>
             <p>
               Elle vise à intégrer dans le fichier de chaque embarcation, tout
@@ -69,7 +69,7 @@ const Immatriculation = () => {
               signature du requérant sous réserve d’une nullité.
             </p>
           </div>
-          <div className="section03">
+          <div className="info-section">
             <h2>V.Radiation </h2>
             <p>
               Elle vise à assurer un équilibre entre la base de données des
@@ -89,7 +89,7 @@ const Immatriculation = () => {
               l’embarcation dans une autre région.s.
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>VI.Visite technique d’une embarcation de type artisanal</h2>
             <p>
               Elle vise à s’assurer de l’existence physique de la pirogue visée
@@ -111,6 +111,7 @@ const Immatriculation = () => {
           </div>
         </div>
       </div>
+      <div className="voir"></div>
       <Footer />
     </>
   );

@@ -5,7 +5,8 @@ const Gallery = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryData, setGalleryData] = useState([]);
-  const [displayCount, setDisplayCount] = useState(8);
+  const [currentPage, setCurrentPage] = useState(1);
+  const imagesPerPage = 8;
 
   useEffect(() => {
     axios
@@ -24,13 +25,25 @@ const Gallery = () => {
     setSelectedImage(null);
   };
 
-  const handleViewMore = () => {
-    setDisplayCount((prevCount) => prevCount + 8);
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
   };
 
-  const handleViewLess = () => {
-    setDisplayCount(8);
+  const handlePreviousPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
   };
+
+  const indexOfLastImage = currentPage * imagesPerPage;
+  const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+  const currentImages =
+    galleryData.length > 0
+      ? galleryData[activeTab].images.slice(indexOfFirstImage, indexOfLastImage)
+      : [];
+
+  const totalPages =
+    galleryData.length > 0
+      ? Math.ceil(galleryData[activeTab].images.length / imagesPerPage)
+      : 0;
 
   return (
     <div className="gallery">
@@ -42,7 +55,10 @@ const Gallery = () => {
           <div
             key={index}
             className={`tab ${activeTab === index ? "active" : ""}`}
-            onClick={() => setActiveTab(index)}
+            onClick={() => {
+              setActiveTab(index);
+              setCurrentPage(1);
+            }}
           >
             {category.title}
           </div>
@@ -51,32 +67,37 @@ const Gallery = () => {
       <div className="images-container">
         {galleryData.length > 0 && (
           <div className="images">
-            {galleryData[activeTab].images
-              .slice(0, displayCount)
-              .map((image, index) => (
-                <div key={index} className="image-item">
-                  <img
-                    src={image.image}
-                    alt={image.title}
-                    onClick={() => handleImageClick(image.image)}
-                  />
-                </div>
-              ))}
+            {currentImages.map((image, index) => (
+              <div key={index} className="image-item">
+                <img
+                  src={image.image}
+                  alt={image.title}
+                  onClick={() => handleImageClick(image.image)}
+                />
+              </div>
+            ))}
           </div>
         )}
       </div>
-      <div className="button-container">
-        {galleryData.length > 0 &&
-          galleryData[activeTab].images.length > displayCount && (
-            <button className="gallery-button" onClick={handleViewMore}>
-              Voir plus
-            </button>
-          )}
-        {displayCount > 8 && (
-          <button className="gallery-button" onClick={handleViewLess}>
-            Voir moins
-          </button>
-        )}
+      <div className="pagination">
+        <button
+          className="pagination-button"
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="page-info">
+          Page {currentPage} / {totalPages}
+        </span>
+        <button
+          className="pagination-button"
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+        <div className="voir"></div>
       </div>
       {selectedImage && (
         <div className="modal" onClick={handleCloseModal}>

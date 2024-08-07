@@ -12,7 +12,7 @@ const PecheInsdustriel = () => {
           <h2>Licence de Pêche industrielle</h2>
         </div>
         <div className="contentees">
-          <div className="section01">
+          <div className="info-section">
             <h2>I.Comment obtenir une licence de pêche?</h2>
             <p>
               L’exercice de la pêche industrielle, dans les eaux maritimes sous
@@ -26,7 +26,7 @@ const PecheInsdustriel = () => {
               pélagique hauturière
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>II.Qui peut obtenir une licence de pêche ? </h2>
             <p>
               Toute personne physique ou morale de nationalité sénégalaise ou
@@ -38,7 +38,7 @@ const PecheInsdustriel = () => {
               pêche ? :La demande peut être initiée à tout moment.
             </p>
           </div>
-          <div className="section03">
+          <div className="info-section">
             <h2>III.Quels sont les documents à fournir ?</h2>
             <p>
               <li>
@@ -53,7 +53,7 @@ const PecheInsdustriel = () => {
               </li>
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>III.Quel est le coût ?</h2>
             <p>
               Pas de frais pour le dépôt des demandes de licence. Toutefois,
@@ -68,7 +68,7 @@ const PecheInsdustriel = () => {
               fonction du type de pêche et du tonnage jauge brute du navire.
             </p>
           </div>
-          <div className="section03">
+          <div className="info-section">
             <h2>IV.La Nature et le délai de la pièce délivrée? </h2>
             <p>
               Après paiement de la redevance, une licence, signée par le
@@ -78,7 +78,7 @@ const PecheInsdustriel = () => {
               l’armateur d’accomplir les formalités administratives requises.
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>V.Comment renouveler ?</h2>
             <p>
               Une fois, la licence délivrée, elle est renouvelable chaque année.
@@ -92,7 +92,7 @@ const PecheInsdustriel = () => {
               maritimes).
             </p>
           </div>
-          <div className="section03">
+          <div className="info-section">
             <h2>VI.Que faire en cas de perte ou de vol ? </h2>
             <p>
               Faire une déclaration de perte au niveau de la gendarmerie ou du
@@ -100,7 +100,7 @@ const PecheInsdustriel = () => {
               de la direction des Pêches maritimes.
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>VII.Où s’adresser ?</h2>
             <p>
               Bureau des licences de la Direction des Pêches maritimes. Pour en
@@ -115,6 +115,7 @@ const PecheInsdustriel = () => {
           </div>
         </div>
       </div>
+      <div className="voir"></div>
       <Footer />
     </>
   );

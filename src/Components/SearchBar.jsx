@@ -42,7 +42,7 @@ const ResponsiveCards = () => {
 
   return (
     <div className={`responsive-cards ${isVisible ? "visible" : ""}`}>
-      <h1 className="main-title">Decouvrer la DPM</h1>
+      <h1 className="main-title">Historique</h1>
       <div className="cards-container">
         {[0, 2, 4].map((startIndex) => (
           <div key={startIndex} className="card-row">

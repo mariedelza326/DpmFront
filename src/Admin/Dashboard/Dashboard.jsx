@@ -631,6 +631,81 @@ const styles = {
   commentContent: {
     marginTop: "10px",
   },
+  formOverlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  formContainer: {
+    backgroundColor: "#fff",
+    padding: "30px",
+    borderRadius: "8px",
+    width: "500px",
+    maxWidth: "90%",
+    position: "relative",
+    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+    overflowY: "auto",
+  },
+  closeButton: {
+    background: "none",
+    border: "none",
+    fontSize: "24px",
+    position: "absolute",
+    top: "15px",
+    right: "15px",
+    cursor: "pointer",
+    color: "#333",
+    transition: "color 0.3s",
+  },
+  closeButtonHover: {
+    color: "#e74c3c",
+  },
+  formGroup: {
+    marginBottom: "20px",
+    display: "flex",
+    flexDirection: "column",
+  },
+  formGroupLabel: {
+    fontWeight: "600",
+    marginBottom: "8px",
+    color: "#333",
+  },
+  formGroupInput: {
+    padding: "10px",
+    border: "1px solid #ddd",
+    borderRadius: "5px",
+    fontSize: "16px",
+    color: "#333",
+    outline: "none",
+    transition: "border-color 0.3s",
+  },
+  formGroupInputFocus: {
+    borderColor: "#4a90e2",
+  },
+  submitButton: {
+    backgroundColor: " #192a56",
+    color: "#fff",
+    border: "none",
+    padding: "12px 20px",
+    borderRadius: "5px",
+    cursor: "pointer",
+    fontSize: "16px",
+    transition: "background-color 0.3s",
+  },
+  submitButtonHover: {
+    backgroundColor: "#357abd",
+  },
+  error: {
+    color: "#e74c3c",
+    marginBottom: "20px",
+    fontSize: "14px",
+  },
 };
 
 export default Dashboard;

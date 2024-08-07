@@ -51,7 +51,7 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink to="/accueil" activeClassName="active">
-              Presentation
+              A Propos
             </NavLink>
           </li>
           <li>

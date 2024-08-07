@@ -37,13 +37,13 @@
     margin-top: 50px;
 
     .governance-tab {
-      padding: 0.75rem 2rem;
+      padding: 0.8rem 2rem;
       margin: 0 1rem;
       cursor: pointer;
       color: #192a56;
       font-family: "Montserrat", sans-serif;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 2rem;
       border-bottom: 3px solid transparent;
       transition: all 0.3s ease;
 
@@ -52,8 +52,8 @@
       }
 
       &.active {
-        border-bottom-color: #3498db;
-        color: #3498db;
+        border-bottom-color: #3498;
+        color: #3498;
       }
     }
   }
@@ -121,7 +121,7 @@
       margin: 0 auto 1.5rem;
       overflow: hidden;
       border-radius: 50%;
-      border: 4px solid #3498db;
+      border: 4px solid #192a56;
 
       img {
         width: 100%;
@@ -155,7 +155,7 @@
     }
 
     .governance-linkedin {
-      color: #3498db;
+      color: #192a56;
       font-size: 1.8rem;
       transition: color 0.3s ease, transform 0.3s ease;
       display: inline-block;

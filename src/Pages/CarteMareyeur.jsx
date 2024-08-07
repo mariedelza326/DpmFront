@@ -12,7 +12,7 @@ const CarteMareyeur = () => {
           <h2>Carte de Mareyeur</h2>
         </div>
         <div className="contentees">
-          <div className="section01">
+          <div className="info-section">
             <h2>I.Catégorie de cartes </h2>
             <p>
               <li>
@@ -29,7 +29,7 @@ const CarteMareyeur = () => {
               1er janvier au 31 décembre. Elle doit être validé chaque année.
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>II.Quels sont les documents à fournir ? </h2>
             <p>
               <li>Deux (2) photos d’identité</li>
@@ -42,7 +42,7 @@ const CarteMareyeur = () => {
               <li>Une Quittance de paiement au Trésor public</li>
             </p>
           </div>
-          <div className="section03">
+          <div className="info-section">
             <h2>III.Quel est le coût ?</h2>
             <p>
               Le paiement s’effectue au Trésor public et est réparti comme suit
@@ -51,14 +51,14 @@ const CarteMareyeur = () => {
               <li>la carte de micro-mareyeur : 10 000 FCFA</li>
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>IV.la nature de la pièce délivrée ?</h2>
             <p>
               Une carte de mareyeur est délivrée par la Direction des Pêches
               Maritimes. Quel est le délai de délivrance ? 7 jours maximum.
             </p>
           </div>
-          <div className="section03">
+          <div className="info-section">
             <h2>V.Comment renouveler ? </h2>
             <p>
               Une fois la carte de mareyeur délivrée, Elle est renouvelable
@@ -66,7 +66,7 @@ const CarteMareyeur = () => {
               quittance délivrée à cet effet par les services compétents.
             </p>
           </div>
-          <div className="section02">
+          <div className="info-section">
             <h2>VI.Que faire en cas de perte ou de vol ?</h2>
             <p>
               Faire une déclaration de perte au niveau de la gendarmerie ou du
@@ -75,7 +75,7 @@ const CarteMareyeur = () => {
               l’établissement d’un duplicata.
             </p>
           </div>
-          <div className="section03">
+          <div className="info-section">
             <h2>VII.Où s’adresser ? </h2>
             <p>
               Services régionaux des pêches et de la surveillance ou Postes de
@@ -91,6 +91,7 @@ const CarteMareyeur = () => {
           </div>
         </div>
       </div>
+      <div className="voir"></div>
       <Footer />
     </>
   );

@@ -36,6 +36,16 @@ import Legislat from "./Pages/legislat";
 import Abrogee from "./Pages/Abrogee";
 import DetailAbrogee from "./Pages/DetailsAbrogee";
 import Accueil from "./Pages/Accueil";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60000, // 1 minute
+      cacheTime: 300000, // 5 minutes
+    },
+  },
+});
 
 const usePageTitle = (defaultTitle) => {
   const location = useLocation();
@@ -57,66 +67,68 @@ const usePageTitle = (defaultTitle) => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <PageTitleUpdater defaultTitle="Direction des peches maritime" />
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Presentation />} />
-        <Route path="/projet" element={<Projet />} />
-        <Route path="/connexion" element={<Connexion />} />
-        <Route path="/inscription" element={<Inscription />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/legislation" element={<Legislation />} />
-        <Route path="/legislation" element={<Legislation />} />
-        <Route path="/legislation/:id" element={<LegislationDetail />} />
-        <Route path="/docummente" element={<Docummente />} />
-        <Route path="/detailsmission" element={<DetailsMission />} />
-        <Route path="/divisionindustriel" element={<DivisionIndustriel />} />
-        <Route path="/divisionartisanal" element={<DivisionArtisanal />} />
-        <Route path="/divisionpeche" element={<DivisionPeche />} />
-        <Route path="/pecheartisanal" element={<PecheArtisanal />} />
-        <Route path="/pecheindustriel" element={<PecheIndustriel />} />
-        <Route path="/cartemareyeur" element={<CarteMareyeur />} />
-        <Route path="/immatriculation" element={<Immatriculation />} />
-        <Route path="/detailactualite/:id" element={<DetailsAcutalite />} />
-        <Route path="/detailshistorique/:id" element={<Copoa />} />
-        <Route path="/detailsprogramme/:id" element={<DetailsProgramme />} />
-        <Route path="/documentdetails/:id" element={<DocumentDetails />} />
-        <Route path="/features" element={<FeaturesCarousel />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/accueil" element={<Accueil />} />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <PrivateRoute>
-              <RegisterForm />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/dashboard"
-          element={<ProtectedRoute element={Dashboard} />}
-        />
-        <Route
-          path="/divisionvalorisation"
-          element={<DivisionValorisation />}
-        />
-        <Route path="/legislationabrogee" element={<LegislationAbrogee />} />
-        <Route path="/legislationvigueur" element={<LegislationVigueur />} />
-        <Route path="/legislat" element={<Legislat />} />
-        <Route path="/abrogee" element={<Abrogee />} />
-        <Route path="/detailsabrogee/:id" element={<DetailAbrogee />} />
-        <Route path="*" element={<Notfound />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <PageTitleUpdater defaultTitle="Direction des peches maritime" />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Presentation />} />
+          <Route path="/projet" element={<Projet />} />
+          <Route path="/connexion" element={<Connexion />} />
+          <Route path="/inscription" element={<Inscription />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/legislation" element={<Legislation />} />
+          <Route path="/legislation" element={<Legislation />} />
+          <Route path="/legislation/:id" element={<LegislationDetail />} />
+          <Route path="/docummente" element={<Docummente />} />
+          <Route path="/detailsmission" element={<DetailsMission />} />
+          <Route path="/divisionindustriel" element={<DivisionIndustriel />} />
+          <Route path="/divisionartisanal" element={<DivisionArtisanal />} />
+          <Route path="/divisionpeche" element={<DivisionPeche />} />
+          <Route path="/pecheartisanal" element={<PecheArtisanal />} />
+          <Route path="/pecheindustriel" element={<PecheIndustriel />} />
+          <Route path="/cartemareyeur" element={<CarteMareyeur />} />
+          <Route path="/immatriculation" element={<Immatriculation />} />
+          <Route path="/detailactualite/:id" element={<DetailsAcutalite />} />
+          <Route path="/detailshistorique/:id" element={<Copoa />} />
+          <Route path="/detailsprogramme/:id" element={<DetailsProgramme />} />
+          <Route path="/documentdetails/:id" element={<DocumentDetails />} />
+          <Route path="/features" element={<FeaturesCarousel />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/accueil" element={<Accueil />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PrivateRoute>
+                <RegisterForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={<ProtectedRoute element={Dashboard} />}
+          />
+          <Route
+            path="/divisionvalorisation"
+            element={<DivisionValorisation />}
+          />
+          <Route path="/legislationabrogee" element={<LegislationAbrogee />} />
+          <Route path="/legislationvigueur" element={<LegislationVigueur />} />
+          <Route path="/legislat" element={<Legislat />} />
+          <Route path="/abrogee" element={<Abrogee />} />
+          <Route path="/detailsabrogee/:id" element={<DetailAbrogee />} />
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 };
 
