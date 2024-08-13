@@ -136,6 +136,7 @@
     .icon {
       font-size: 2rem;
       margin-top: 10px;
+      background: linear-gradient(135deg, #4834df, #3498db);
     }
 
     h2 {
@@ -211,7 +212,7 @@
         textarea {
           width: 100%;
           padding: 10px;
-          border: 2px solid #ddd;
+          border: 2px solid $white;
           border-radius: 5px;
           font-size: 16px;
           transition: all 0.3s ease;
@@ -264,7 +265,7 @@
         padding: 12px 24px;
         border: none;
         border-radius: 5px;
-        background: #192a56;
+        background: linear-gradient(135deg, #4834df, #3498db);
         color: white;
         font-family: "Montserrat", sans-serif;
         font-size: 16px;

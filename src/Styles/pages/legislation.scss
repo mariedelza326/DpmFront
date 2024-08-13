@@ -96,7 +96,7 @@
 }
 
 .new-section {
-  background-color: #192a56;
+  background: linear-gradient(135deg, #4834df, #3498db);
   width: 100%;
   padding: var(--padding);
   border-radius: var(--borderRadius);
@@ -109,7 +109,7 @@
   animation: slideIn 1s ease-in-out;
 }
 .newe-section {
-  background-color: #192a56;
+  background: linear-gradient(135deg, #4834df, #3498db);
   width: 100%;
   padding: var(--padding);
   border-radius: var(--borderRadius);
